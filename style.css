@@ -770,6 +770,11 @@ strong { font-weight: 600; }
   color: var(--text-dim);
 }
 
+.contact-grid-full {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 860px;
+}
+
 .contact-note {
   text-align: center;
   color: var(--text-muted);
@@ -849,8 +854,10 @@ strong { font-weight: 600; }
     grid-template-columns: 1fr;
   }
 
-  .contact-grid {
+  .contact-grid,
+  .contact-grid-full {
     grid-template-columns: 1fr;
+    max-width: 100%;
   }
 
   .pub-item {
