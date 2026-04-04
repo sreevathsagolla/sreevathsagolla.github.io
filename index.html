@@ -4,13 +4,419 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sreevathsa Golla — Oceanography & Climate Science</title>
-<meta name="description" content="PhD Researcher in Oceanography and Climate Science at the University of Southampton. Research on ENSO, ocean dynamics, and climate modelling.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-<link rel="stylesheet" href="style.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root,[data-theme="light"]{
+  --deep:#1b2d45;
+  --mid:#34597a;
+  --teal:#3d8b94;
+  --teal-light:#5ab0b8;
+  --sand:#f5f0ea;
+  --sand-dark:#e6ddd3;
+  --warm:#d4a574;
+  --text:#2c3e50;
+  --text-light:#5a6c7e;
+  --white:#fdfbf8;
+  --coral:#c4705a;
+  --border:rgba(27,45,69,0.06);
+  --card-shadow:rgba(27,45,69,0.06);
+}
+[data-theme="dark"]{
+  --deep:#c8d8e8;
+  --mid:#8aaec8;
+  --teal:#4db8c9;
+  --teal-light:#6dd0df;
+  --sand:#15202d;
+  --sand-dark:#1a2a3a;
+  --warm:#d4a574;
+  --text:#c0d0dc;
+  --text-light:#8a9aaa;
+  --white:#0f1923;
+  --coral:#e0846c;
+  --border:rgba(200,220,240,0.08);
+  --card-shadow:rgba(0,0,0,0.2);
+}
+
+html{scroll-behavior:smooth;font-size:16px}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  color:var(--text);
+  background:var(--white);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  transition:background .3s,color .3s;
+}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(253,251,248,0.9);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .3s,background .3s,border-color .3s;
+}
+[data-theme="dark"] nav{background:rgba(15,25,35,0.92)}
+nav.scrolled{box-shadow:0 2px 30px rgba(27,45,69,0.08)}
+.nav-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2rem;
+}
+.nav-name{
+  font-family:'Newsreader',serif;font-size:1.1rem;font-weight:500;
+  color:var(--deep);letter-spacing:0.02em;text-decoration:none;
+}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:0.82rem;font-weight:400;color:var(--text-light);
+  text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;
+  transition:color .25s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;
+  height:1.5px;background:var(--teal);transform:scaleX(0);
+  transition:transform .25s;transform-origin:left;
+}
+.nav-links a:hover{color:var(--deep)}
+.nav-links a:hover::after{transform:scaleX(1)}
+
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-icons{display:flex;gap:0.75rem;align-items:center}
+.nav-icons a{color:var(--text-light);font-size:0.95rem;transition:color .25s;text-decoration:none}
+.nav-icons a:hover{color:var(--teal)}
+.theme-toggle{
+  background:none;border:1px solid var(--border);border-radius:6px;
+  width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;color:var(--text-light);transition:color .2s,border-color .2s;flex-shrink:0;font-size:0.85rem;
+}
+.theme-toggle:hover{color:var(--teal);border-color:var(--teal)}
+[data-theme="light"] .icon-moon{display:none}
+[data-theme="light"] .icon-sun{display:inline}
+[data-theme="dark"] .icon-sun{display:none}
+[data-theme="dark"] .icon-moon{display:inline}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--deep);margin:5px 0;transition:.3s}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:8rem 2rem 4rem;
+  position:relative;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.7) 100%)}
+[data-theme="dark"] .hero-overlay{background:linear-gradient(to bottom,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.85) 100%)}
+.hero-inner{
+  max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:center;
+}
+.hero-text{color:#fff}
+.hero-text h1{
+  font-family:'Newsreader',serif;font-size:3.2rem;font-weight:400;
+  color:#fff;line-height:1.2;margin-bottom:0.6rem;
+  animation:fadeUp .8s ease both;
+}
+.hero-text h1 span{
+  display:block;font-size:1.1rem;font-weight:400;
+  color:var(--teal-light);letter-spacing:0.12em;text-transform:uppercase;
+  margin-top:0.8rem;font-family:'DM Sans',sans-serif;
+}
+.hero-text .tagline{
+  font-size:1.08rem;color:rgba(255,255,255,0.8);line-height:1.8;
+  max-width:520px;margin:1.5rem 0 0.8rem;
+  animation:fadeUp .8s ease .15s both;
+}
+.hero-links{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  animation:fadeUp .8s ease .3s both;
+}
+.hero-links a{
+  font-size:0.82rem;font-weight:500;letter-spacing:0.06em;
+  text-transform:uppercase;text-decoration:none;
+  padding:0.65rem 1.6rem;border-radius:4px;
+  transition:all .25s;
+}
+.hero-location{
+  font-size:0.88rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem;
+  animation:fadeUp .8s ease .22s both;display:flex;align-items:center;gap:0.4rem;
+}
+.hero-location .location-pin{color:var(--teal-light);opacity:0.7;flex-shrink:0}
+.hero-links .primary{
+  background:var(--teal);color:#fff;
+}
+.hero-links .primary:hover{background:var(--teal-light);color:#fff}
+.hero-links .secondary{
+  border:1.5px solid rgba(255,255,255,0.35);color:#fff;
+}
+.hero-links .secondary:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6)}
+
+.hero-photo{
+  animation:fadeUp .8s ease .2s both;
+  position:relative;
+}
+.hero-photo::before{
+  content:'';position:absolute;inset:-12px;
+  border:1.5px solid var(--teal-light);border-radius:16px;
+  opacity:0.3;
+}
+.hero-photo img{
+  width:100%;border-radius:12px;
+  filter:grayscale(0%);
+  box-shadow:0 20px 60px rgba(27,45,69,0.15);
+}
+
+/* ─── SECTION BASE ─── */
+section{padding:5rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{
+  font-size:0.75rem;font-weight:500;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--teal);
+  margin-bottom:0.5rem;
+}
+.section-title{
+  font-family:'Newsreader',serif;font-size:2rem;font-weight:400;
+  color:var(--deep);margin-bottom:2.5rem;line-height:1.3;
+}
+
+/* ─── WAVE DIVIDER ─── */
+.wave-divider{
+  height:60px;background:var(--white);position:relative;overflow:hidden;
+}
+.wave-divider svg{
+  position:absolute;bottom:0;width:100%;height:60px;
+}
+
+/* ─── ABOUT ─── */
+#about{background:var(--sand)}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;
+}
+.about-text p{margin-bottom:1rem;color:var(--text-light);font-size:0.95rem}
+.interests-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+.interests-tags span{
+  font-size:0.78rem;padding:0.4rem 1rem;border-radius:100px;
+  background:rgba(61,139,148,0.1);color:var(--teal);
+  font-weight:500;letter-spacing:0.02em;
+}
+.about-details{display:flex;flex-direction:column;gap:1.5rem}
+.detail-card{
+  padding:1.5rem;border-radius:10px;
+  background:var(--white);
+  border:1px solid var(--border);
+  transition:box-shadow .3s,background .3s,border-color .3s;
+}
+.detail-card:hover{box-shadow:0 8px 30px var(--card-shadow)}
+.detail-card .supervisors{font-size:0.82rem;color:var(--text-light);margin-top:0.4rem}
+.detail-card h4{
+  font-family:'Newsreader',serif;font-size:1.05rem;font-weight:500;
+  color:var(--deep);margin-bottom:0.3rem;
+}
+.detail-card p{font-size:0.85rem;color:var(--text-light)}
+.detail-card .institution{color:var(--teal);font-weight:500;font-size:0.82rem}
+
+/* ─── PUBLICATIONS ─── */
+.pub-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.pub-item{
+  display:block;text-decoration:none;color:inherit;
+  padding:1.8rem;border-radius:10px;
+  background:var(--sand);
+  border-left:3px solid var(--teal);
+  transition:all .25s;cursor:pointer;
+}
+.pub-item:hover{
+  border-left-color:var(--coral);color:inherit;
+  box-shadow:0 6px 24px var(--card-shadow);transform:translateY(-2px);
+}
+.pub-item-nolink{cursor:default}
+.pub-item-nolink:hover{transform:none}
+.pub-status.status-revision{background:rgba(61,139,148,0.12);color:var(--teal)}
+.pub-status.status-prep{background:rgba(196,112,90,0.12);color:var(--coral)}
+.pub-item .pub-tag{
+  font-size:0.7rem;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--coral);margin-bottom:0.5rem;
+}
+.pub-item h4{
+  font-family:'Newsreader',serif;font-size:1.05rem;font-weight:500;
+  color:var(--deep);line-height:1.5;margin-bottom:0.4rem;
+}
+.pub-item .pub-authors{font-size:0.85rem;color:var(--text-light);margin-bottom:0.3rem}
+.pub-item .pub-journal{font-size:0.82rem;color:var(--teal);font-style:italic}
+.pub-item .pub-status{
+  display:inline-block;font-size:0.7rem;padding:0.2rem 0.7rem;
+  border-radius:100px;background:rgba(196,112,90,0.12);
+  color:var(--coral);font-weight:500;margin-top:0.5rem;
+}
+
+/* ─── EXPERIENCE ─── */
+#experience{background:var(--sand)}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:1.5px;background:linear-gradient(180deg,var(--teal),var(--sand-dark));
+}
+.timeline-item{
+  position:relative;padding-bottom:2.5rem;
+}
+.timeline-item::before{
+  content:'';position:absolute;left:-2rem;top:6px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--teal);border:2px solid var(--sand);
+}
+.timeline-item h4{
+  font-family:'Newsreader',serif;font-size:1.1rem;font-weight:500;
+  color:var(--deep);
+}
+.timeline-item .role-place{font-size:0.88rem;color:var(--teal);font-weight:500;margin:0.2rem 0}
+.timeline-item .role-date{font-size:0.78rem;color:var(--text-light);margin-bottom:0.5rem}
+.timeline-item p{font-size:0.88rem;color:var(--text-light);line-height:1.7}
+.timeline-item .supervisors{font-size:0.82rem;color:var(--text-light);margin-top:0.4rem}
+
+/* ─── CONFERENCES ─── */
+.conf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.conf-card{
+  padding:1.5rem;border-radius:10px;
+  background:var(--sand);transition:all .25s;
+}
+.conf-card:hover{box-shadow:0 4px 20px rgba(27,45,69,0.06)}
+.conf-card .conf-year{
+  font-size:0.75rem;font-weight:500;color:var(--teal);
+  letter-spacing:0.1em;margin-bottom:0.4rem;
+}
+.conf-card h4{
+  font-family:'Newsreader',serif;font-size:0.95rem;font-weight:500;
+  color:var(--deep);line-height:1.5;margin-bottom:0.3rem;
+}
+.conf-card p{font-size:0.82rem;color:var(--text-light)}
+.conf-meta{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.4rem}
+.pres-type{
+  font-size:0.68rem;font-weight:600;padding:0.15rem 0.6rem;
+  border-radius:100px;letter-spacing:0.04em;text-transform:uppercase;
+}
+.pres-oral{background:rgba(61,139,148,0.12);color:var(--teal)}
+.pres-poster{background:rgba(76,153,76,0.12);color:#3d8a3d}
+[data-theme="dark"] .pres-poster{color:#6dba6d}
+
+/* ─── SKILLS ─── */
+#skills{background:var(--sand)}
+.skills-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;
+}
+.skill-group{
+  padding:1.5rem;border-radius:10px;background:var(--white);
+  border:1px solid rgba(27,45,69,0.06);
+}
+.skill-group h4{
+  font-size:0.78rem;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:0.8rem;
+}
+.skill-group p{font-size:0.88rem;color:var(--text-light);line-height:1.6}
+.skill-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem}
+.skill-header h4{margin-bottom:0}
+.skill-icon{color:var(--teal);font-size:1rem}
+.skill-pills{display:flex;flex-wrap:wrap;gap:0.4rem}
+.skill-pills span{
+  font-size:0.78rem;padding:0.3rem 0.8rem;border-radius:100px;
+  background:rgba(61,139,148,0.1);color:var(--teal);font-weight:500;
+}
+.teaching-list{display:flex;flex-direction:column;gap:0.6rem}
+.teaching-item{
+  display:flex;align-items:flex-start;gap:0.8rem;
+  padding:0.8rem 1rem;border-radius:8px;font-size:0.88rem;color:var(--text-light);
+}
+.teaching-item strong{color:var(--deep);font-weight:600}
+.teaching-bullet{
+  width:8px;height:8px;border-radius:50%;background:var(--teal);
+  flex-shrink:0;margin-top:0.5rem;
+}
+
+/* ─── CONTACT ─── */
+#contact{
+  background:#1b2d45;color:rgba(255,255,255,0.85);
+  padding:5rem 2rem;
+}
+[data-theme="dark"] #contact{background:#0d1820}
+#contact .section-label{color:var(--teal-light)}
+#contact .section-title{color:#fff;margin-bottom:1rem}
+.contact-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:start}
+.contact-intro{font-size:0.95rem;opacity:0.75;margin-bottom:2rem;max-width:480px}
+.contact-form{display:flex;flex-direction:column;gap:1.2rem}
+.form-group{display:flex;flex-direction:column;gap:0.3rem}
+.form-group label{font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#5ab0b8}
+.form-group input,.form-group textarea{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  border-radius:6px;padding:0.7rem 1rem;font-family:'DM Sans',sans-serif;
+  font-size:0.9rem;color:rgba(255,255,255,0.9);transition:border-color .25s;resize:vertical;
+}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:#3d8b94}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.3)}
+.form-submit{
+  align-self:flex-start;background:#3d8b94;color:#fff;border:none;border-radius:4px;
+  padding:0.7rem 2rem;font-size:0.82rem;font-weight:500;letter-spacing:0.06em;
+  text-transform:uppercase;cursor:pointer;transition:background .25s;font-family:'DM Sans',sans-serif;
+}
+.form-submit:hover{background:#5ab0b8}
+.contact-sidebar-title{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#5ab0b8;margin-bottom:1.2rem}
+.contact-link-list{display:flex;flex-direction:column;gap:0.7rem}
+.contact-link-list a{
+  display:flex;align-items:center;gap:0.8rem;font-size:0.88rem;
+  color:rgba(255,255,255,0.7);text-decoration:none;padding:0.5rem 0.8rem;
+  border-radius:6px;border:1px solid rgba(255,255,255,0.08);transition:all .25s;
+}
+.contact-link-list a:hover{background:rgba(255,255,255,0.06);border-color:#3d8b94;color:#5ab0b8}
+.contact-link-list a i{font-size:1.1rem;width:20px;text-align:center;color:#5ab0b8}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--deep);border-top:1px solid rgba(255,255,255,0.06);
+  text-align:center;padding:1.5rem 2rem;
+  font-size:0.78rem;color:rgba(255,255,255,0.35);
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.fade-in{opacity:0;transform:translateY(20px);transition:all .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-text .tagline{margin-left:auto;margin-right:auto}
+  .hero-location{justify-content:center}
+  .hero-links{justify-content:center}
+  .hero-photo{max-width:320px;margin:0 auto;order:-1}
+  .hero-text h1{font-size:2.4rem}
+  .about-grid{grid-template-columns:1fr}
+  .interests-tags{justify-content:center}
+  .pub-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .nav-links{
+    display:none;flex-direction:column;position:absolute;
+    top:100%;left:0;right:0;background:rgba(253,251,248,0.98);
+    backdrop-filter:blur(20px);padding:1rem 2rem 1.5rem;gap:1rem;
+    border-bottom:1px solid var(--border);
+  }
+  [data-theme="dark"] .nav-links{background:rgba(15,25,35,0.98)}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+  .nav-icons{display:none}
+  .hero-text h1{font-size:2rem}
+  section{padding:3.5rem 1.5rem}
+  .conf-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
 
@@ -20,7 +426,7 @@
     <a href="#" class="nav-name">S. Golla</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Research</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#talks">Presentations</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -48,20 +454,21 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="assets/background.JPG" alt="" aria-hidden="true">
+    <img src="assets/background.JPG" alt="">
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-inner">
     <div class="hero-text">
       <h1>
         Sreevathsa Golla
-        <span>Oceanography & Climate Science</span>
+        <span>Oceanography &amp; Climate Science</span>
       </h1>
       <p class="tagline">
-        PhD Researcher at the University of Southampton & National Oceanography Centre, studying how El Ni&ntilde;o&ndash;Southern Oscillation evolves in a warming climate and shapes extreme events worldwide.
+        PhD Researcher at the University of Southampton &amp; National Oceanography Centre, studying how El Ni&ntilde;o&ndash;Southern Oscillation evolves in a warming climate and shapes extreme events worldwide.
       </p>
       <p class="hero-location">
-        <i class="fas fa-map-marker-alt"></i> Southampton, United Kingdom
+        <svg class="location-pin" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Southampton, United Kingdom
       </p>
       <div class="hero-links">
         <a href="#publications" class="primary">Publications</a>
@@ -78,7 +485,7 @@
 <section id="about">
   <div class="section-inner">
     <p class="section-label">About</p>
-    <h2 class="section-title">Research & Education Background</h2>
+    <h2 class="section-title">Research &amp; Education Background</h2>
     <div class="about-grid">
       <div class="about-text">
         <p>
@@ -98,63 +505,63 @@
       </div>
       <div class="about-details">
         <div class="detail-card">
-          <h4>PhD in Oceanography & Climate Science</h4>
-          <p class="institution">University of Southampton & National Oceanography Centre &middot; 2023 &ndash; Present</p>
+          <h4>PhD in Oceanography &amp; Climate Science</h4>
+          <p class="institution">University of Southampton &amp; NOC &middot; 2023 &ndash; Present</p>
           <p><strong>Thesis: &ldquo;Evolution of the El Ni&ntilde;o &ndash; Southern Oscillation in a Warming Climate and its Impact on Climate Extremes&rdquo;</strong></p>
           <p>NERC INSPIRE Doctoral Training Partnership funded.</p>
-          <p class="supervisors"><em>Advisors:</em> Dr. Jo&euml;l Hirschi, Dr. Adam Blaker, Dr. Jennifer Mecking & Dr. Stephen Kelly (NOC); Prof. Robert Marsh (University of Southampton)</p>
+          <p class="supervisors"><em>Advisors:</em> Dr. Jo&euml;l Hirschi, Dr. Adam Blaker, Dr. Jennifer Mecking &amp; Dr. Stephen Kelly (NOC); Prof. Robert Marsh (University of Southampton)</p>
         </div>
         <div class="detail-card">
-          <h4>BS&ndash;MS (Dual Degree) in Earth & Environmental Sciences</h4>
+          <h4>BS&ndash;MS (Dual Degree) in Earth &amp; Environmental Sciences</h4>
           <p class="institution">Indian Institute of Science Education and Research (IISER) Bhopal, India &middot; 2018 &ndash; 2023</p>
-          <p>Minor in Data Science & Engineering &middot; CPI 8.81/10 &middot; Proficiency Medal for Best Academic Performance</p>
+          <p>Minor in Data Science &amp; Engineering &middot; CPI 8.81/10 &middot; Proficiency Medal for Best Academic Performance</p>
           <p><strong>MS Thesis: &ldquo;Western Boundary Currents: Representation in High-Resolution Ocean General Circulation Models (OGCMs) and their Relationship with Climate Modes&rdquo;</strong></p>
-          <p class="supervisors"><em>Advisors:</em> Prof. Paul Myers (University of Alberta) & Dr. Pankaj Kumar (IISER Bhopal)</p>
+          <p class="supervisors"><em>Advisors:</em> Prof. Paul Myers (University of Alberta) &amp; Dr. Pankaj Kumar (IISER Bhopal)</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- RESEARCH JOURNEY -->
-<section id="research">
+<!-- EXPERIENCE / RESEARCH JOURNEY -->
+<section id="experience">
   <div class="section-inner">
     <p class="section-label">Experience</p>
     <h2 class="section-title">Research Journey</h2>
     <div class="timeline">
       <div class="timeline-item fade-in">
         <h4>PhD Researcher</h4>
-        <p class="role-place">University of Southampton & National Oceanography Centre</p>
+        <p class="role-place">University of Southampton &amp; National Oceanography Centre</p>
         <p class="role-date">Sep 2023 &ndash; Present</p>
-        <p>Investigating the evolution of ENSO in a warming climate using eddy-resolving model simulations and targeted sensitivity experiments. Combining high-resolution climate model simulations with attribution experiments to unravel mechanisms driving ENSO variability and its broader impacts. NERC INSPIRE DTP funded.</p>
-        <p class="supervisors"><em>Advisors:</em> Dr. Jo&euml;l Hirschi, Dr. Adam Blaker, Dr. Jennifer Mecking & Dr. Stephen Kelly (NOC); Prof. Robert Marsh (University of Southampton)</p>
+        <p>Investigating the evolution of ENSO in a warming climate using eddy-resolving model simulations and targeted sensitivity experiments. Combining high-resolution climate model simulations with attribution experiments to unravel mechanisms driving ENSO variability and its broader impacts. Under INSPIRE Doctoral Training Partnership programme, funded by NERC, UK Research &amp; Innovation.</p>
+        <p class="supervisors"><em>Advisors:</em> Dr. Jo&euml;l Hirschi, Dr. Adam Blaker, Dr. Jennifer Mecking &amp; Dr. Stephen Kelly (NOC); Prof. Robert Marsh (University of Southampton)</p>
       </div>
       <div class="timeline-item fade-in">
         <h4>Visiting Researcher</h4>
-        <p class="role-place">Climate & Global Dynamics (CGD) Laboratory, NSF NCAR, Boulder, CO, USA</p>
+        <p class="role-place">Climate &amp; Global Dynamics (CGD) Laboratory, NSF NCAR, Boulder, CO, USA</p>
         <p class="role-date">Aug 2025 &ndash; Oct 2025</p>
-        <p>Evaluated resolution dependence and future reorganisation of Indo-Pacific variability in CESM MESACLIP simulations. Assessed projected changes in IOD, Indonesian Throughflow (ITF), and inter-basin IOD-ITF-ENSO interactions under different SSP warming scenarios. Analysed moderate to <em>very</em> high-resolution (0.1&deg;) ocean-atmosphere coupled CESM simulations.</p>
+        <p>Evaluated resolution dependence and future reorganisation of Indo-Pacific variability in CESM MESACLIP simulations across different global warming scenarios. Assessed projected changes in Indian Ocean Dipole (IOD), Indonesian Throughflow (ITF), and inter-basin IOD-ITF-ENSO interactions. Analysed moderate to <em>very</em> high-resolution (0.1&deg;) ocean-atmosphere coupled CESM simulations.</p>
         <p class="supervisors"><em>Supervisors:</em> Dr. G&ouml;khan Danabasoglu (Head, Oceanography Section), Dr. Isla Simpson (Head, Climate Analysis Section), Dr. Fred Castruccio (Scientist IV, Oceanography Section)</p>
       </div>
       <div class="timeline-item fade-in">
         <h4>Research Intern &mdash; Mitacs Globalink Fellowship</h4>
-        <p class="role-place">Geophysical Fluid Dynamics & Modelling Lab, University of Alberta, Edmonton, Canada</p>
+        <p class="role-place">Geophysical Fluid Dynamics &amp; Modelling Lab, University of Alberta, Edmonton, Canada</p>
         <p class="role-date">May 2022 &ndash; Aug 2022</p>
         <p>Analysed the North Atlantic Current (NAC) representation in high-resolution NEMO model configurations at varying spatio-temporal scales. Examined SST and SSH contours from different model setups; calculated section transports with comparisons to satellite/reanalysis data. Work continued into MS thesis.</p>
         <p class="supervisors"><em>Supervisor:</em> Prof. Paul G. Myers (GFDL Lab, Dept. of Earth and Atmospheric Sciences)</p>
       </div>
       <div class="timeline-item fade-in">
         <h4>Research Intern &mdash; Deep Learning-Based Downscaling (GANs)</h4>
-        <p class="role-place">Climate & Glacier Modelling Lab (CGMLI), Indian Institute of Science Education and Research (IISER) Bhopal, India</p>
+        <p class="role-place">Climate &amp; Glacier Modelling Lab (CGMLI), Indian Institute of Science Education and Research (IISER) Bhopal, India</p>
         <p class="role-date">Aug 2021 &ndash; Mar 2022</p>
         <p>Developed a custom Super-Resolution GAN (SRGAN) to spatially downscale IMD gridded rainfall data from 1.00&deg; to 0.25&deg; resolution over India. Led the full technical implementation: architecture design, coding, testing and hyperparameter tuning.</p>
         <p class="supervisors"><em>Supervisor:</em> Dr. Pankaj Kumar, Dept. of EES, IISER Bhopal</p>
       </div>
       <div class="timeline-item fade-in">
         <h4>Research Intern &mdash; Spatial Downscaling Using CNNs</h4>
-        <p class="role-place">Climate & Glacier Modelling Lab (CGMLI), Indian Institute of Science Education and Research (IISER) Bhopal, India</p>
+        <p class="role-place">Climate &amp; Glacier Modelling Lab (CGMLI), Indian Institute of Science Education and Research (IISER) Bhopal, India</p>
         <p class="role-date">Apr 2021 &ndash; Jul 2021</p>
-        <p>Applied SRCNN and SRResNet-based image super-resolution techniques to spatially downscale IMD daily gridded rainfall data (1980&ndash;2010), benchmarking performance across multiple architectures. Published as a first-author comparative assessment in <em>SN Computer Science</em>.</p>
+        <p>Applied SRCNN and SRResNet-based image super-resolution techniques to spatially downscale IMD daily gridded rainfall data (1980&ndash;2010), benchmarking across multiple architectures. Published as a first-author comparative assessment in <em>SN Computer Science</em>.</p>
         <p class="supervisors"><em>Supervisor:</em> Dr. Pankaj Kumar, Dept. of EES, IISER Bhopal</p>
       </div>
     </div>
@@ -167,46 +574,36 @@
     <p class="section-label">Research Output</p>
     <h2 class="section-title">Publications</h2>
     <div class="pub-grid">
-      <a href="https://doi.org/10.21203/rs.3.rs-8345018/v1" target="_blank" class="pub-card fade-in">
-        <div class="pub-tag-row">
-          <span class="pub-tag">First Author</span>
-          <span class="pub-status status-revision">In Revision</span>
-        </div>
+      <a href="https://doi.org/10.21203/rs.3.rs-8345018/v1" target="_blank" class="pub-item fade-in">
+        <div class="pub-tag">First Author</div>
         <h4>Characterising surface discrepancies and vertical coherence of ocean temperature anomalies in CMIP6 HighResMIP during ENSO events</h4>
-        <p class="pub-authors"><strong>Golla, S.</strong>, Hirschi, J. J.-M., Blaker, A. T., Mecking, J., Kelly, S. & Marsh, R. (2026)</p>
+        <p class="pub-authors"><strong>Golla, S.</strong>, Hirschi, J. J.-M., Blaker, A. T., Mecking, J., Kelly, S. &amp; Marsh, R. (2026)</p>
         <p class="pub-journal">Climate Dynamics (Preprint)</p>
+        <span class="pub-status status-revision">In Revision</span>
       </a>
-      <div class="pub-card pub-card-nolink fade-in">
-        <div class="pub-tag-row">
-          <span class="pub-tag">First Author</span>
-          <span class="pub-status status-prep">In Preparation</span>
-        </div>
+      <div class="pub-item pub-item-nolink fade-in">
+        <div class="pub-tag">First Author</div>
         <h4>Modulation of thermocline feedback by westerly wind bursts and surface wind forcing during El Ni&ntilde;o development in an ocean-only model</h4>
-        <p class="pub-authors"><strong>Golla, S.</strong>, Hirschi, J. J.-M., Blaker, A. T., Mecking, J., Kelly, S. & Marsh, R.</p>
+        <p class="pub-authors"><strong>Golla, S.</strong>, Hirschi, J. J.-M., Blaker, A. T., Mecking, J., Kelly, S. &amp; Marsh, R.</p>
         <p class="pub-journal">Journal of Geophysical Research: Oceans</p>
+        <span class="pub-status status-prep">In Preparation</span>
       </div>
-      <a href="https://doi.org/10.1007/s42979-024-02653-3" target="_blank" class="pub-card fade-in">
-        <div class="pub-tag-row">
-          <span class="pub-tag">First Author &middot; 2024</span>
-        </div>
+      <a href="https://doi.org/10.1007/s42979-024-02653-3" target="_blank" class="pub-item fade-in">
+        <div class="pub-tag">First Author &middot; 2024</div>
         <h4>Comparative assessment of image super-resolution techniques for spatial downscaling of gridded rainfall data</h4>
-        <p class="pub-authors"><strong>Golla, S.</strong>, Murukesh, M. & Kumar, P. (2024)</p>
+        <p class="pub-authors"><strong>Golla, S.</strong>, Murukesh, M. &amp; Kumar, P. (2024)</p>
         <p class="pub-journal">SN Computer Science, 5. DOI: 10.1007/s42979-024-02653-3</p>
       </a>
-      <a href="https://doi.org/10.1029/2025JC022762" target="_blank" class="pub-card fade-in">
-        <div class="pub-tag-row">
-          <span class="pub-tag">Co-Author &middot; 2025</span>
-        </div>
+      <a href="https://doi.org/10.1029/2025JC022762" target="_blank" class="pub-item fade-in">
+        <div class="pub-tag">Co-Author &middot; 2025</div>
         <h4>Warming trend in the western Indian Ocean driven by oceanic transport</h4>
-        <p class="pub-authors">Joseph, L., Dey, D., Skliris, N., Sanchez-Franks, A., Marsh, R., Hirschi, J. & <strong>Golla, S.</strong> (2025)</p>
+        <p class="pub-authors">Joseph, L., Dey, D., Skliris, N., Sanchez-Franks, A., Marsh, R., Hirschi, J. &amp; <strong>Golla, S.</strong> (2025)</p>
         <p class="pub-journal">Journal of Geophysical Research: Oceans, 131(1)</p>
       </a>
-      <a href="https://doi.org/10.1007/s40808-023-01899-9" target="_blank" class="pub-card fade-in">
-        <div class="pub-tag-row">
-          <span class="pub-tag">Co-Author &middot; 2023</span>
-        </div>
+      <a href="https://doi.org/10.1007/s40808-023-01899-9" target="_blank" class="pub-item fade-in">
+        <div class="pub-tag">Co-Author &middot; 2023</div>
         <h4>Downscaling and reconstruction of high-resolution gridded rainfall data over India using deep learning-based generative adversarial network</h4>
-        <p class="pub-authors">Murukesh, M., <strong>Golla, S.</strong> & Kumar, P. (2023)</p>
+        <p class="pub-authors">Murukesh, M., <strong>Golla, S.</strong> &amp; Kumar, P. (2023)</p>
         <p class="pub-journal">Modeling Earth Systems and Environment, 10, 2221&ndash;2237</p>
       </a>
     </div>
@@ -216,39 +613,39 @@
 <!-- PRESENTATIONS -->
 <section id="talks">
   <div class="section-inner">
-    <p class="section-label">Conferences & Talks</p>
+    <p class="section-label">Conferences &amp; Talks</p>
     <h2 class="section-title">Presentations</h2>
     <div class="conf-grid">
       <div class="conf-card fade-in">
         <div class="conf-meta">
-          <span class="conf-year">2026</span>
-          <span class="conf-type conf-type-oral">Oral</span>
+          <p class="conf-year">2026</p>
+          <span class="pres-type pres-oral">Oral</span>
         </div>
         <h4>Wind modulation of thermocline feedback during development of El Ni&ntilde;o</h4>
         <p>Ocean Sciences Meeting 2026 &middot; Glasgow, United Kingdom</p>
       </div>
       <div class="conf-card fade-in">
         <div class="conf-meta">
-          <span class="conf-year">2024</span>
-          <span class="conf-type conf-type-poster">Poster</span>
+          <p class="conf-year">2024</p>
+          <span class="pres-type pres-poster">Poster</span>
         </div>
         <h4>Surface discrepancies and vertical coherence of ocean temperature anomalies during ENSO</h4>
         <p>AGU Fall Meeting 2024 &middot; Washington D.C., USA</p>
       </div>
       <div class="conf-card fade-in">
         <div class="conf-meta">
-          <span class="conf-year">2024</span>
-          <span class="conf-type conf-type-poster">Poster</span>
+          <p class="conf-year">2024</p>
+          <span class="pres-type pres-poster">Poster</span>
         </div>
-        <h4>Dynamical evolution of ENSO in a warming background: recent trends & future projections</h4>
+        <h4>Dynamical evolution of ENSO in a warming background: recent trends &amp; future projections</h4>
         <p>EGU General Assembly 2024 &middot; Vienna, Austria</p>
       </div>
       <div class="conf-card fade-in">
         <div class="conf-meta">
-          <span class="conf-year">2023</span>
-          <span class="conf-type conf-type-poster">Poster</span>
+          <p class="conf-year">2023</p>
+          <span class="pres-type pres-poster">Poster</span>
         </div>
-        <h4>Spatial downscaling of IMD gridded rainfall using SRCNN & SRResNet</h4>
+        <h4>Spatial downscaling of IMD gridded rainfall using SRCNN &amp; SRResNet</h4>
         <p>Frontiers in Geosciences Research (FGRC) 2023 &middot; PRL, Ahmedabad, India</p>
       </div>
     </div>
@@ -259,89 +656,43 @@
 <section id="skills">
   <div class="section-inner">
     <p class="section-label">Technical</p>
-    <h2 class="section-title">Skills & Tools</h2>
-    <div class="skills-mosaic">
-      <div class="skill-tile skill-tile-wide fade-in">
-        <div class="skill-icon"><i class="fas fa-code"></i></div>
-        <div>
-          <h4>Programming</h4>
-          <p>Python, MATLAB, Mathematica, LaTeX, Shell scripting</p>
-        </div>
+    <h2 class="section-title">Skills &amp; Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-group fade-in">
+        <div class="skill-header"><i class="fas fa-code skill-icon"></i><h4>Programming</h4></div>
+        <div class="skill-pills"><span>Python</span><span>MATLAB</span><span>Mathematica</span><span>LaTeX</span><span>Shell</span></div>
       </div>
-      <div class="skill-tile fade-in">
-        <div class="skill-icon"><i class="fas fa-water"></i></div>
-        <div>
-          <h4>Ocean & Climate Models</h4>
-          <p>NEMO, CESM (MESACLIP), CMIP6/HighResMIP model analysis</p>
-        </div>
+      <div class="skill-group fade-in">
+        <div class="skill-header"><i class="fas fa-water skill-icon"></i><h4>Ocean &amp; Climate Models</h4></div>
+        <div class="skill-pills"><span>NEMO</span><span>CESM</span><span>CMIP6</span><span>HighResMIP</span></div>
       </div>
-      <div class="skill-tile fade-in">
-        <div class="skill-icon"><i class="fas fa-globe-americas"></i></div>
-        <div>
-          <h4>GIS & Data Tools</h4>
-          <p>ArcGIS, QGIS, CDO, CDAT</p>
-        </div>
+      <div class="skill-group fade-in">
+        <div class="skill-header"><i class="fas fa-globe-americas skill-icon"></i><h4>GIS &amp; Data Tools</h4></div>
+        <div class="skill-pills"><span>ArcGIS</span><span>QGIS</span><span>CDO</span><span>CDAT</span></div>
       </div>
-      <div class="skill-tile fade-in">
-        <div class="skill-icon"><i class="fas fa-brain"></i></div>
-        <div>
-          <h4>AI / ML</h4>
-          <p>Deep Learning, Image Super-Resolution, CNNs, GANs for climate data</p>
-        </div>
+      <div class="skill-group fade-in">
+        <div class="skill-header"><i class="fas fa-brain skill-icon"></i><h4>AI / ML</h4></div>
+        <div class="skill-pills"><span>Deep Learning</span><span>Super-Resolution</span><span>CNNs</span><span>GANs</span></div>
       </div>
-      <div class="skill-tile fade-in">
-        <div class="skill-icon"><i class="fas fa-server"></i></div>
-        <div>
-          <h4>Computing</h4>
-          <p>HPC clusters, CPU & GPU environments</p>
-        </div>
+      <div class="skill-group fade-in">
+        <div class="skill-header"><i class="fas fa-server skill-icon"></i><h4>Computing</h4></div>
+        <div class="skill-pills"><span>HPC Clusters</span><span>CPU &amp; GPU</span></div>
       </div>
-      <div class="skill-tile fade-in">
-        <div class="skill-icon"><i class="fas fa-language"></i></div>
-        <div>
-          <h4>Languages</h4>
-          <p>English (Proficient; TOEFL 108/120), Hindi (Fluent), Telugu (Native)</p>
-        </div>
+      <div class="skill-group fade-in">
+        <div class="skill-header"><i class="fas fa-language skill-icon"></i><h4>Languages</h4></div>
+        <div class="skill-pills"><span>English (TOEFL 108)</span><span>Hindi (Fluent)</span><span>Telugu (Native)</span></div>
       </div>
     </div>
 
-    <h3 class="subsection-title">Teaching & Leadership</h3>
-    <div class="teaching-grid">
-      <div class="teaching-item fade-in">
-        <span class="teaching-icon"><i class="fas fa-chalkboard-teacher"></i></span>
-        <div>
-          <strong>Module Demonstrator</strong>
-          <p>SOES3010 (Spring '26), SOES2025 & SOES3042 (Fall '24), SOES6037 (Fall '23), University of Southampton</p>
-        </div>
-      </div>
-      <div class="teaching-item fade-in">
-        <span class="teaching-icon"><i class="fas fa-laptop-code"></i></span>
-        <div>
-          <strong>Teaching Assistant</strong>
-          <p>ECS101: Introduction to Programming (Spring '20), IISER Bhopal</p>
-        </div>
-      </div>
-      <div class="teaching-item fade-in">
-        <span class="teaching-icon"><i class="fas fa-users-cog"></i></span>
-        <div>
-          <strong>Vice-Secretary</strong>
-          <p>Computing and Networking Council (CNC), IISER Bhopal (2021&ndash;2022)</p>
-        </div>
-      </div>
-      <div class="teaching-item fade-in">
-        <span class="teaching-icon"><i class="fas fa-globe-europe"></i></span>
-        <div>
-          <strong>Club Coordinator</strong>
-          <p>Earth and Environmental Sciences (EES) Club, IISER Bhopal (2020&ndash;2021)</p>
-        </div>
-      </div>
-      <div class="teaching-item fade-in">
-        <span class="teaching-icon"><i class="fas fa-calendar-alt"></i></span>
-        <div>
-          <strong>Event Management & Design Team Lead</strong>
-          <p>ORB 2021, Annual Departmental Symposium, Dept. of EES</p>
-        </div>
-      </div>
+    <p class="section-label" style="margin-top:2.5rem">Leadership</p>
+    <h3 class="section-title" style="font-size:1.6rem;margin-bottom:1.5rem">Teaching &amp; Leadership</h3>
+    <div class="teaching-list">
+      <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Module Demonstrator</strong> &mdash; SOES3010 (Spring &rsquo;26), SOES2025 &amp; SOES3042 (Fall &rsquo;24), SOES6037 (Fall &rsquo;23), School of Ocean and Earth Science, University of Southampton</div></div>
+      <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Teaching Assistant</strong> &mdash; ECS101: Introduction to Programming (Spring &rsquo;20), IISER Bhopal</div></div>
+      <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Vice-Secretary</strong>, Computing and Networking Council (CNC), IISER Bhopal (2021&ndash;2022)</div></div>
+      <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Club Coordinator</strong>, Earth and Environmental Sciences (EES) Club, IISER Bhopal (2020&ndash;2021)</div></div>
+      <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Event Management &amp; Design Team Lead</strong>, ORB 2021, Annual Departmental Symposium, Dept. of EES</div></div>
+      <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Student Volunteer</strong>, Conference Events Management Committee, TROPMET-2022 National Symposium</div></div>
     </div>
   </div>
 </section>
@@ -352,7 +703,7 @@
     <p class="section-label">Contact</p>
     <h2 class="section-title">Let's Connect</h2>
     <div class="contact-grid">
-      <div class="contact-form-wrapper">
+      <div class="contact-form-wrap">
         <p class="contact-intro">I'm always open to conversations about ocean dynamics, climate variability, and potential collaborations.</p>
         <form class="contact-form" action="mailto:sreevathsa.golla@soton.ac.uk" method="GET" enctype="text/plain">
           <div class="form-group">
@@ -360,7 +711,7 @@
             <input type="text" id="name" name="name" placeholder="Your name" required>
           </div>
           <div class="form-group">
-            <label for="email">E-Mail</label>
+            <label for="email">E-Mail ID</label>
             <input type="email" id="email" name="email" placeholder="your@email.com" required>
           </div>
           <div class="form-group">
@@ -371,32 +722,14 @@
         </form>
       </div>
       <div class="contact-sidebar">
-        <p class="contact-sidebar-label">Find me on</p>
-        <div class="contact-links-vertical">
-          <a href="mailto:sreevathsa.golla@soton.ac.uk">
-            <i class="fas fa-envelope"></i>
-            <span>sreevathsa.golla@soton.ac.uk</span>
-          </a>
-          <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">
-            <i class="ai ai-google-scholar"></i>
-            <span>Google Scholar</span>
-          </a>
-          <a href="https://orcid.org/0000-0002-4607-1837" target="_blank">
-            <i class="ai ai-orcid"></i>
-            <span>ORCID</span>
-          </a>
-          <a href="https://www.researchgate.net/profile/Sreevathsa-Golla" target="_blank">
-            <i class="ai ai-researchgate"></i>
-            <span>ResearchGate</span>
-          </a>
-          <a href="https://github.com/sreevathsagolla" target="_blank">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-          </a>
-          <a href="https://www.linkedin.com/in/sreevathsagolla" target="_blank">
-            <i class="fab fa-linkedin"></i>
-            <span>LinkedIn</span>
-          </a>
+        <p class="contact-sidebar-title">Find me on</p>
+        <div class="contact-link-list">
+          <a href="mailto:sreevathsa.golla@soton.ac.uk"><i class="fas fa-envelope"></i> sreevathsa.golla@soton.ac.uk</a>
+          <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank"><i class="ai ai-google-scholar"></i> Google Scholar</a>
+          <a href="https://orcid.org/0000-0002-4607-1837" target="_blank"><i class="ai ai-orcid"></i> ORCID</a>
+          <a href="https://www.researchgate.net/profile/Sreevathsa-Golla" target="_blank"><i class="ai ai-researchgate"></i> ResearchGate</a>
+          <a href="https://github.com/sreevathsagolla" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://www.linkedin.com/in/sreevathsagolla" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
         </div>
       </div>
     </div>
@@ -407,6 +740,49 @@
   <p>&copy; 2026 Sreevathsa Golla. Built for the curious.</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+// Theme toggle
+(function(){
+  var toggle=document.getElementById('theme-toggle');
+  var root=document.documentElement;
+  var saved=localStorage.getItem('theme');
+  if(saved)root.setAttribute('data-theme',saved);
+  toggle.addEventListener('click',function(){
+    var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  });
+})();
+
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile menu
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Close menu on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
