@@ -1,11 +1,338 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sree Vathsa Golla</title>
+    <title>Sreevathsa Golla — Oceanography & Climate Science</title>
+    <meta name="description" content="PhD Researcher in Oceanography and Climate Science at the University of Southampton. Research on ENSO, ocean dynamics, and climate modelling.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello I am Sree!</h1>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">SG</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#research">Research</a>
+                <a href="#publications">Publications</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+            <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="hero-greeting">Hello, I'm</p>
+                <h1 class="hero-name">Sreevathsa Golla</h1>
+                <p class="hero-title">PhD Researcher in Oceanography & Climate Science</p>
+                <p class="hero-affiliation">University of Southampton & National Oceanography Centre</p>
+                <div class="hero-links">
+                    <a href="mailto:sreevathsa.golla@soton.ac.uk" class="btn btn-primary">Get in Touch</a>
+                    <a href="#research" class="btn btn-outline">View Research</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-frame">
+                    <img src="assets/profile.jpg" alt="Sreevathsa Golla at Stonehenge">
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,70 1440,60 L1440,120 L0,120 Z" fill="var(--color-bg)"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a PhD researcher at the University of Southampton and the National Oceanography Centre, studying the evolution of the El Ni&ntilde;o&ndash;Southern Oscillation (ENSO) in a warming climate and its impact on climate extremes. My work combines eddy-resolving high-resolution climate model simulations with targeted sensitivity and attribution experiments to unravel the mechanisms driving ENSO variability.</p>
+                    <p>My broader research interests span physical oceanography, large-scale ocean dynamics, ocean&ndash;atmosphere coupling, climate variability and change, ocean modelling, and AI/ML applications in ocean and climate science.</p>
+                </div>
+                <div class="about-details">
+                    <div class="about-card">
+                        <h3>Research Interests</h3>
+                        <div class="tag-list">
+                            <span class="tag">El Ni&ntilde;o (ENSO)</span>
+                            <span class="tag">Ocean Dynamics</span>
+                            <span class="tag">Ocean&ndash;Atmosphere Coupling</span>
+                            <span class="tag">Climate Variability</span>
+                            <span class="tag">Ocean Modelling</span>
+                            <span class="tag">AI/ML for Climate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section section-alt" id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>PhD in Oceanography and Climate Science</h3>
+                            <span class="timeline-date">Sep 2023 &ndash; Present</span>
+                        </div>
+                        <p class="timeline-sub">University of Southampton & National Oceanography Centre, Southampton, UK</p>
+                        <p class="timeline-detail"><strong>Thesis:</strong> &ldquo;Evolution of the El Ni&ntilde;o &ndash; Southern Oscillation in a Warming Climate and its Impact on Climate Extremes&rdquo;</p>
+                        <p class="timeline-detail">INSPIRE Doctoral Training Partnership, funded by NERC, UK Research & Innovation</p>
+                        <p class="timeline-detail"><em>Advisors:</em> Dr. Jo&euml;l Hirschi, Dr. Adam Blaker, Dr. Jennifer Mecking & Dr. Stephen Kelly (NOC); Prof. Robert Marsh (University of Southampton)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>BS&ndash;MS (Dual Degree) in Earth and Environmental Sciences</h3>
+                            <span class="timeline-date">Aug 2018 &ndash; May 2023</span>
+                        </div>
+                        <p class="timeline-sub">Indian Institute of Science Education and Research (IISER) Bhopal, India</p>
+                        <p class="timeline-detail">Minor: Data Science and Engineering &nbsp;|&nbsp; CPI (CGPA): 8.81/10</p>
+                        <p class="timeline-detail">Awarded the <em>Proficiency Medal</em> for Best Academic Performance in Earth & Environmental Sciences</p>
+                        <p class="timeline-detail"><strong>MS Thesis:</strong> &ldquo;Western Boundary Currents: Representation in High-Resolution Ocean General Circulation Models (OGCMs) and their Relationship with Climate Modes&rdquo;</p>
+                        <p class="timeline-detail"><em>Advisors:</em> Prof. Paul Myers (University of Alberta) & Dr. Pankaj Kumar (IISER Bhopal)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="section" id="research">
+        <div class="container">
+            <h2 class="section-title">Research Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Visiting Researcher</h3>
+                            <span class="timeline-date">Aug &ndash; Oct 2025</span>
+                        </div>
+                        <p class="timeline-sub">Climate & Global Dynamics (CGD) Laboratory, NSF NCAR, Boulder, CO, USA</p>
+                        <ul>
+                            <li>Evaluated resolution dependence and future reorganisation of Indo-Pacific variability in CESM MESACLIP simulations across different global warming scenarios</li>
+                            <li>Assessed projected changes in Indian Ocean Dipole (IOD), Indonesian Throughflow (ITF) and inter-basin IOD-ITF-ENSO interactions</li>
+                            <li>Analysed moderate to <em>very</em> high-resolution (0.1&deg;) ocean-atmosphere coupled CESM simulations under different SSP warming scenarios</li>
+                        </ul>
+                        <p class="timeline-detail"><em>Supervisors:</em> Dr. G&ouml;khan Danabasoglu, Dr. Isla Simpson, Dr. Fred Castruccio</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Research Intern &mdash; Mitacs Globalink Fellowship</h3>
+                            <span class="timeline-date">May &ndash; Aug 2022</span>
+                        </div>
+                        <p class="timeline-sub">Geophysical Fluid Dynamics & Modelling Lab, University of Alberta, Edmonton, Canada</p>
+                        <ul>
+                            <li>Analysed North Atlantic Current (NAC) representation in high-resolution NEMO model configurations at varying spatio-temporal scales</li>
+                            <li>Examined SST and SSH contours from different model setups; calculated section transports with comparisons to satellite/reanalysis data</li>
+                        </ul>
+                        <p class="timeline-detail"><em>Supervisor:</em> Prof. Paul G. Myers</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Research Intern &mdash; Deep Learning-Based Downscaling (GANs)</h3>
+                            <span class="timeline-date">Aug 2021 &ndash; Mar 2022</span>
+                        </div>
+                        <p class="timeline-sub">Climate & Glacier Modelling Lab (CGMLI), IISER Bhopal, India</p>
+                        <ul>
+                            <li>Developed a custom Super-Resolution GAN (SRGAN) to spatially downscale IMD gridded rainfall data from 1.00&deg; to 0.25&deg; resolution over India</li>
+                            <li>Led the full technical implementation: architecture design, coding, testing and hyperparameter tuning</li>
+                        </ul>
+                        <p class="timeline-detail"><em>Supervisor:</em> Dr. Pankaj Kumar</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Research Intern &mdash; Spatial Downscaling Using CNNs</h3>
+                            <span class="timeline-date">Apr &ndash; Jul 2021</span>
+                        </div>
+                        <p class="timeline-sub">Climate & Glacier Modelling Lab (CGMLI), IISER Bhopal, India</p>
+                        <ul>
+                            <li>Applied SRCNN and SRResNet-based image super-resolution techniques to spatially downscale IMD daily gridded rainfall data (1980&ndash;2010)</li>
+                            <li>Published as a first-author comparative assessment in <em>SN Computer Science</em></li>
+                        </ul>
+                        <p class="timeline-detail"><em>Supervisor:</em> Dr. Pankaj Kumar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="section section-alt" id="publications">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+
+            <h3 class="pub-category">First Author</h3>
+            <ol class="pub-list">
+                <li>
+                    <strong>Golla, S.</strong>, Murukesh, M. & Kumar, P. (2024). Comparative assessment of image super-resolution techniques for spatial downscaling of gridded rainfall data. <em>SN Computer Science</em>, 5. DOI: 10.1007/s42979-024-02653-3
+                </li>
+                <li>
+                    <strong>Golla, S.</strong>, Hirschi, J. J.-M., Blaker, A. T., Mecking, J., Kelly, S. & Marsh, R. (2026). Characterising surface discrepancies and vertical coherence of ocean temperature anomalies in CMIP6 HighResMIP during ENSO events. <em>Preprint, in revision at SN Climate Dynamics.</em> DOI: 10.21203/rs.3.rs-8345018/v1
+                </li>
+                <li>
+                    <strong>Golla, S.</strong>, Hirschi, J. J.-M., Blaker, A. T., Mecking, J., Kelly, S. & Marsh, R. Modulation of thermocline feedback by westerly wind bursts and surface wind forcing during El Ni&ntilde;o development in an ocean-only model. <em>In preparation for Journal of Geophysical Research: Oceans.</em>
+                </li>
+            </ol>
+
+            <h3 class="pub-category">Co-Authored</h3>
+            <ol class="pub-list" start="4">
+                <li>
+                    Murukesh, M., <strong>Golla, S.</strong> & Kumar, P. (2023). Downscaling and reconstruction of high-resolution gridded rainfall data over India using deep learning-based generative adversarial network. <em>Modeling Earth Systems and Environment</em>, 10, 2221&ndash;2237. DOI: 10.1007/s40808-023-01899-9
+                </li>
+                <li>
+                    Joseph, L., Dey, D., Skliris, N., Sanchez-Franks, A., Marsh, R., Hirschi, J. & <strong>Golla, S.</strong> (2025). Warming trend in the western Indian Ocean driven by oceanic transport. <em>Journal of Geophysical Research: Oceans</em>, 131(1). DOI: 10.1029/2025JC022762
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Conferences Section -->
+    <section class="section" id="conferences">
+        <div class="container">
+            <h2 class="section-title">Conferences & Presentations</h2>
+            <div class="conf-grid">
+                <div class="conf-card">
+                    <span class="conf-year">2026</span>
+                    <h3>Ocean Sciences Meeting 2026</h3>
+                    <p>Wind modulation of thermocline feedback during development of El Ni&ntilde;o</p>
+                    <p class="conf-location">Glasgow, United Kingdom</p>
+                </div>
+                <div class="conf-card">
+                    <span class="conf-year">2024</span>
+                    <h3>AGU Fall Meeting 2024</h3>
+                    <p>Characterising surface discrepancies and vertical coherence of ocean temperature anomalies in CMIP6 HighResMIP during ENSO events</p>
+                    <p class="conf-location">Washington D.C., USA</p>
+                </div>
+                <div class="conf-card">
+                    <span class="conf-year">2024</span>
+                    <h3>EGU General Assembly 2024</h3>
+                    <p>Dynamical evolution of ENSO in a warming background: A review of recent trends & future projections</p>
+                    <p class="conf-location">Vienna, Austria</p>
+                </div>
+                <div class="conf-card">
+                    <span class="conf-year">2023</span>
+                    <h3>Frontiers in Geosciences Research (FGRC) 2023</h3>
+                    <p>Spatial downscaling of IMD gridded rainfall data using SRCNN and SRResNet: A comparative study</p>
+                    <p class="conf-location">Ahmedabad, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience / Skills Section -->
+    <section class="section section-alt" id="experience">
+        <div class="container">
+            <h2 class="section-title">Skills & Teaching</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming</h3>
+                    <p>Python, MATLAB, Mathematica, LaTeX, Shell scripting</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Ocean/Climate Models</h3>
+                    <p>NEMO, CESM (MESACLIP), CMIP6/HighResMIP model analysis</p>
+                </div>
+                <div class="skill-card">
+                    <h3>GIS & Data Tools</h3>
+                    <p>ArcGIS, QGIS, CDO (Climate Data Operators), CDAT</p>
+                </div>
+                <div class="skill-card">
+                    <h3>AI/ML</h3>
+                    <p>Deep Learning, Machine Learning, Image Super-Resolution for Climate Data</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Computing</h3>
+                    <p>High Performance Computing (HPC) clusters, CPU & GPU environments</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Languages</h3>
+                    <p>English (Proficient; TOEFL 108/120), Hindi (Fluent), Telugu (Native)</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Teaching & Leadership</h3>
+            <ul class="teaching-list">
+                <li>Module Demonstrator, SOES3010 (Spring &rsquo;26), SOES2025 & SOES3042 (Fall &rsquo;24), SOES6037 (Fall &rsquo;23), University of Southampton</li>
+                <li>Teaching Assistant, ECS101: Introduction to Programming (Spring &rsquo;20), IISER Bhopal</li>
+                <li>Vice-Secretary, Computing and Networking Council (CNC), IISER Bhopal (2021&ndash;2022)</li>
+                <li>Club Coordinator, Earth and Environmental Sciences (EES) Club, IISER Bhopal (2020&ndash;2021)</li>
+                <li>Event Management & Design Team Lead, ORB 2021, Dept. of EES</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container contact-container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="contact-text">I'm always open to discussing research collaborations, opportunities, or just chatting about ocean and climate science.</p>
+            <div class="contact-links">
+                <a href="mailto:sreevathsa.golla@soton.ac.uk" class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>sreevathsa.golla@soton.ac.uk</span>
+                </a>
+                <a href="https://orcid.org/0000-0002-4607-1837" target="_blank" rel="noopener" class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="12" fill="currentColor" stroke="none" font-weight="bold">iD</text></svg>
+                    <span>ORCID</span>
+                </a>
+                <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    <span>Google Scholar</span>
+                </a>
+                <a href="https://github.com/sreevathsagolla" target="_blank" rel="noopener" class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/sreevathsagolla" target="_blank" rel="noopener" class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Sreevathsa Golla. Built with care.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
