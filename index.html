@@ -29,19 +29,19 @@
   --card-shadow:rgba(45,54,64,0.06);
 }
 [data-theme="dark"]{
-  --deep:#c5cdd4;
-  --mid:#8a9aaa;
-  --teal:#8fadbe;
-  --teal-light:#a8c4d2;
-  --sand:#1a1f25;
-  --sand-dark:#222930;
-  --warm:#b89e7e;
-  --text:#bcc5cd;
-  --text-light:#8090a0;
-  --white:#12161b;
-  --coral:#c9a07a;
-  --border:rgba(200,210,220,0.08);
-  --card-shadow:rgba(0,0,0,0.25);
+  --deep:#c8cdd3;
+  --mid:#8c9aaa;
+  --teal:#8fa5b3;
+  --teal-light:#a3b8c4;
+  --sand:#1c2028;
+  --sand-dark:#242a33;
+  --warm:#c4a882;
+  --text:#c0c8d0;
+  --text-light:#7e8d9c;
+  --white:#141820;
+  --coral:#c9a27c;
+  --border:rgba(180,195,210,0.08);
+  --card-shadow:rgba(0,0,0,0.3);
 }
 
 html{scroll-behavior:smooth;font-size:16px}
@@ -63,7 +63,7 @@ nav{
   border-bottom:1px solid var(--border);
   transition:box-shadow .3s,background .3s,border-color .3s;
 }
-[data-theme="dark"] nav{background:rgba(15,25,35,0.92)}
+[data-theme="dark"] nav{background:rgba(20,24,32,0.93)}
 nav.scrolled{box-shadow:0 2px 30px rgba(27,45,69,0.08)}
 .nav-inner{
   max-width:1100px;margin:0 auto;
@@ -88,20 +88,38 @@ nav.scrolled{box-shadow:0 2px 30px rgba(27,45,69,0.08)}
 .nav-links a:hover{color:var(--deep)}
 .nav-links a:hover::after{transform:scaleX(1)}
 
-.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-right{display:flex;align-items:center;gap:1.2rem}
 .nav-icons{display:flex;gap:0.75rem;align-items:center}
 .nav-icons a{color:var(--text-light);font-size:0.95rem;transition:color .25s;text-decoration:none}
 .nav-icons a:hover{color:var(--teal)}
-.theme-toggle{
-  background:none;border:1px solid var(--border);border-radius:6px;
-  width:34px;height:34px;display:flex;align-items:center;justify-content:center;
-  cursor:pointer;color:var(--text-light);transition:color .2s,border-color .2s;flex-shrink:0;font-size:0.85rem;
+.theme-switch{
+  position:relative;display:inline-flex;align-items:center;
+  width:56px;height:28px;flex-shrink:0;margin-left:0.5rem;cursor:pointer;
 }
-.theme-toggle:hover{color:var(--teal);border-color:var(--teal)}
-[data-theme="light"] .icon-moon{display:none}
-[data-theme="light"] .icon-sun{display:inline}
-[data-theme="dark"] .icon-sun{display:none}
-[data-theme="dark"] .icon-moon{display:inline}
+.theme-switch input{opacity:0;width:0;height:0;position:absolute}
+.theme-switch .slider{
+  position:absolute;inset:0;
+  background:var(--sand-dark);border:1px solid var(--border);
+  border-radius:14px;transition:background .3s,border-color .3s;
+}
+.theme-switch .slider::before{
+  content:'';position:absolute;top:3px;left:3px;
+  width:20px;height:20px;border-radius:50%;
+  background:var(--teal);transition:transform .3s;
+}
+.theme-switch input:checked ~ .slider{background:var(--sand-dark)}
+.theme-switch input:checked ~ .slider::before{transform:translateX(28px)}
+.theme-switch .switch-icon{
+  position:absolute;top:50%;transform:translateY(-50%);
+  font-size:0.7rem;z-index:1;pointer-events:none;color:var(--text-light);transition:opacity .3s;
+}
+.theme-switch .switch-sun{left:7px}
+.theme-switch .switch-moon{right:7px}
+[data-theme="light"] .switch-sun{opacity:1;color:var(--coral)}
+[data-theme="light"] .switch-moon{opacity:0.35}
+[data-theme="dark"] .switch-sun{opacity:0.35}
+[data-theme="dark"] .switch-moon{opacity:1;color:var(--teal-light)}
+.theme-switch:hover .slider{border-color:var(--teal)}
 .hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
 .hamburger span{display:block;width:22px;height:2px;background:var(--deep);margin:5px 0;transition:.3s}
 
@@ -343,7 +361,7 @@ section{padding:5rem 2rem}
   background:#2d3640;color:rgba(255,255,255,0.85);
   padding:5rem 2rem;
 }
-[data-theme="dark"] #contact{background:#151a1f}
+[data-theme="dark"] #contact{background:#181d24}
 #contact .section-label{color:var(--teal-light)}
 #contact .section-title{color:#fff;margin-bottom:1rem}
 .contact-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:start}
@@ -442,10 +460,12 @@ footer{
         <a href="https://www.linkedin.com/in/sreevathsa-golla/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/sreevathsagolla" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
       </div>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-        <i class="fas fa-sun icon-sun"></i>
-        <i class="fas fa-moon icon-moon"></i>
-      </button>
+      <label class="theme-switch" aria-label="Toggle dark mode">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider"></span>
+        <i class="fas fa-sun switch-icon switch-sun"></i>
+        <i class="fas fa-moon switch-icon switch-moon"></i>
+      </label>
       <button class="hamburger" id="menuBtn" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -747,9 +767,12 @@ footer{
   var toggle=document.getElementById('theme-toggle');
   var root=document.documentElement;
   var saved=localStorage.getItem('theme');
-  if(saved)root.setAttribute('data-theme',saved);
-  toggle.addEventListener('click',function(){
-    var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  if(saved){
+    root.setAttribute('data-theme',saved);
+    toggle.checked=(saved==='dark');
+  }
+  toggle.addEventListener('change',function(){
+    var next=toggle.checked?'dark':'light';
     root.setAttribute('data-theme',next);
     localStorage.setItem('theme',next);
   });
