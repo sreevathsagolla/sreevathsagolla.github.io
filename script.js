@@ -1,66 +1,55 @@
 // Theme toggle
 (function () {
-    const toggle = document.getElementById('theme-toggle');
-    const root = document.documentElement;
+    var toggle = document.getElementById('theme-toggle');
+    var root = document.documentElement;
 
-    // Check saved preference or system preference
-    const saved = localStorage.getItem('theme');
+    var saved = localStorage.getItem('theme');
     if (saved) {
         root.setAttribute('data-theme', saved);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        root.setAttribute('data-theme', 'dark');
     }
+    // Default is light (set in HTML), no system preference override needed
 
     toggle.addEventListener('click', function () {
-        const current = root.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
+        var current = root.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
     });
 })();
 
-// Mobile menu toggle
+// Nav scroll effect
 (function () {
-    const btn = document.getElementById('mobile-toggle');
-    const links = document.querySelector('.nav-links');
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function () {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+})();
 
-    btn.addEventListener('click', function () {
-        links.classList.toggle('active');
+// Mobile menu
+(function () {
+    document.getElementById('menuBtn').addEventListener('click', function () {
+        document.getElementById('navLinks').classList.toggle('open');
     });
 
-    // Close menu when a link is clicked
-    links.querySelectorAll('a').forEach(function (a) {
+    document.querySelectorAll('.nav-links a').forEach(function (a) {
         a.addEventListener('click', function () {
-            links.classList.remove('active');
+            document.getElementById('navLinks').classList.remove('open');
         });
     });
 })();
 
-// Navbar background on scroll
+// Fade-in on scroll
 (function () {
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 40) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
-})();
-
-// Smooth reveal on scroll
-(function () {
-    const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
             }
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.timeline-item, .conf-card, .skill-card, .about-card, .contact-item').forEach(function (el) {
-        el.classList.add('reveal');
+    document.querySelectorAll('.fade-in').forEach(function (el) {
         observer.observe(el);
     });
 })();
