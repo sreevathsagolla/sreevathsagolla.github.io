@@ -283,12 +283,14 @@ section{padding:3.5rem 2rem}
 }
 .timeline-item{
   position:relative;padding-bottom:1.8rem;
+  display:grid;grid-template-columns:1fr 300px;gap:1.5rem;align-items:start;
 }
 .timeline-item::before{
   content:'';position:absolute;left:-2rem;top:6px;
   width:10px;height:10px;border-radius:50%;
   background:var(--teal);border:2px solid var(--sand);
 }
+.timeline-text{}
 .timeline-item h4{
   font-family:'Newsreader',serif;font-size:1.1rem;font-weight:500;
   color:var(--deep);
@@ -296,6 +298,45 @@ section{padding:3.5rem 2rem}
 .timeline-item .role-date{font-size:0.78rem;color:var(--text-light);margin-bottom:0.5rem}
 .timeline-item p{font-size:0.88rem;color:var(--text-light);line-height:1.7}
 .timeline-item .supervisors{font-size:0.82rem;color:var(--text-light);margin-top:0.4rem}
+
+/* ─── CAROUSEL ─── */
+.carousel{
+  position:relative;width:100%;aspect-ratio:4/3;border-radius:12px;
+  overflow:hidden;background:var(--sand-dark);transition:opacity .3s,filter .3s;
+}
+.carousel.dimmed{opacity:0.35;filter:grayscale(0.5)}
+.carousel-track{
+  display:flex;height:100%;transition:transform .45s ease;
+}
+.carousel-slide{
+  min-width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.75rem;color:var(--text-light);
+  background:var(--sand-dark);
+}
+.carousel-slide img{width:100%;height:100%;object-fit:cover}
+.carousel-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;border-radius:50%;border:none;
+  background:rgba(45,54,64,0.6);color:#fff;font-size:0.7rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:2;
+  backdrop-filter:blur(4px);
+}
+.carousel:hover .carousel-arrow{opacity:1}
+.carousel-arrow:hover{background:rgba(45,54,64,0.85)}
+.carousel-arrow.prev{left:6px}
+.carousel-arrow.next{right:6px}
+.carousel-dots{
+  position:absolute;bottom:6px;left:50%;transform:translateX(-50%);
+  display:flex;gap:5px;z-index:2;
+}
+.carousel-dot{
+  width:6px;height:6px;border-radius:50%;border:none;
+  background:rgba(255,255,255,0.4);cursor:pointer;padding:0;
+  transition:background .2s;
+}
+.carousel-dot.active{background:rgba(255,255,255,0.9)}
 
 /* ─── CONFERENCES ─── */
 .conf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
@@ -436,6 +477,8 @@ footer{
   .about-grid{grid-template-columns:1fr}
   .interests-tags{justify-content:center}
   .pub-grid{grid-template-columns:1fr}
+  .timeline-item{grid-template-columns:1fr}
+  .carousel{max-width:340px;margin-top:0.5rem}
   .contact-grid{grid-template-columns:1fr}
   .teaching-leadership-grid{grid-template-columns:1fr}
 }
@@ -572,32 +615,81 @@ footer{
     <h2 class="section-title">Research Journey</h2>
     <div class="timeline">
       <div class="timeline-item fade-in">
-        <h4>Visiting Researcher &mdash; Indo-Pacific Variability in CESM MESACLIP</h4>
-        <p class="role-place"><a href="https://www.cgd.ucar.edu/" target="_blank" class="inst-link">CGD Laboratory, NSF NCAR</a>, Boulder, CO, USA</p>
-        <p class="role-date">Aug 2025 &ndash; Oct 2025</p>
-        <p>Assessed resolution dependence and future reorganisation of Indo-Pacific variability (IOD, ITF, ENSO interactions) in high-resolution (0.1&deg;) coupled CESM simulations under multiple warming scenarios.</p>
-        <p class="supervisors"><span class="sup-tag">Supervisors</span> <a href="https://impacts.ucar.edu/en/persons/gokhan-danabasoglu/" target="_blank" class="advisor-link">Dr. G&ouml;khan Danabasoglu</a>, <a href="https://staff.cgd.ucar.edu/islas/" target="_blank" class="advisor-link">Dr. Isla Simpson</a>, <a href="https://www.cgd.ucar.edu/people/frederic-castruccio" target="_blank" class="advisor-link">Dr. Fred Castruccio</a></p>
+        <div class="timeline-text">
+          <h4>Visiting Researcher &mdash; Indo-Pacific Variability in CESM MESACLIP</h4>
+          <p class="role-place"><a href="https://www.cgd.ucar.edu/" target="_blank" class="inst-link">CGD Laboratory, NSF NCAR</a>, Boulder, CO, USA</p>
+          <p class="role-date">Aug 2025 &ndash; Oct 2025</p>
+          <p>Assessed resolution dependence and future reorganisation of Indo-Pacific variability (IOD, ITF, ENSO interactions) in high-resolution (0.1&deg;) coupled CESM simulations under multiple warming scenarios.</p>
+          <p class="supervisors"><span class="sup-tag">Supervisors</span> <a href="https://impacts.ucar.edu/en/persons/gokhan-danabasoglu/" target="_blank" class="advisor-link">Dr. G&ouml;khan Danabasoglu</a>, <a href="https://staff.cgd.ucar.edu/islas/" target="_blank" class="advisor-link">Dr. Isla Simpson</a>, <a href="https://www.cgd.ucar.edu/people/frederic-castruccio" target="_blank" class="advisor-link">Dr. Fred Castruccio</a></p>
+        </div>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track">
+            <div class="carousel-slide" style="background:#5a7d8a"><span>NCAR Photo 1</span></div>
+            <div class="carousel-slide" style="background:#7a9dad"><span>NCAR Photo 2</span></div>
+            <div class="carousel-slide" style="background:#4a6d7a"><span>NCAR Photo 3</span></div>
+          </div>
+          <button class="carousel-arrow prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-arrow next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-dots"></div>
+        </div>
       </div>
       <div class="timeline-item fade-in">
-        <h4>Research Intern &mdash; Mitacs Globalink Research Internship</h4>
-        <p class="role-place">Geophysical Fluid Dynamics &amp; Modelling Lab, <a href="https://www.ualberta.ca/en/index.html" target="_blank" class="inst-link">University of Alberta</a>, Edmonton, Canada</p>
-        <p class="role-date">May 2022 &ndash; Aug 2022</p>
-        <p>Analysed North Atlantic Current representation in high-resolution NEMO configurations, comparing modelled SST/SSH and section transports against satellite/reanalysis data; work continued into MS thesis.</p>
-        <p class="supervisors"><span class="sup-tag">Supervisor</span> <a href="https://apps.ualberta.ca/directory/person/pmyers" target="_blank" class="advisor-link">Prof. Paul G. Myers</a></p>
+        <div class="timeline-text">
+          <h4>Research Intern &mdash; Mitacs Globalink Research Internship</h4>
+          <p class="role-place">Geophysical Fluid Dynamics &amp; Modelling Lab, <a href="https://www.ualberta.ca/en/index.html" target="_blank" class="inst-link">University of Alberta</a>, Edmonton, Canada</p>
+          <p class="role-date">May 2022 &ndash; Aug 2022</p>
+          <p>Analysed North Atlantic Current representation in high-resolution NEMO configurations, comparing modelled SST/SSH and section transports against satellite/reanalysis data; work continued into MS thesis.</p>
+          <p class="supervisors"><span class="sup-tag">Supervisor</span> <a href="https://apps.ualberta.ca/directory/person/pmyers" target="_blank" class="advisor-link">Prof. Paul G. Myers</a></p>
+        </div>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track">
+            <div class="carousel-slide" style="background:#6b8e7b"><span>Alberta Photo 1</span></div>
+            <div class="carousel-slide" style="background:#8aad9b"><span>Alberta Photo 2</span></div>
+            <div class="carousel-slide" style="background:#5a7e6b"><span>Alberta Photo 3</span></div>
+          </div>
+          <button class="carousel-arrow prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-arrow next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-dots"></div>
+        </div>
       </div>
       <div class="timeline-item fade-in">
-        <h4>Research Intern &mdash; Deep Learning-Based Downscaling (GANs)</h4>
-        <p class="role-place">Climate &amp; Glacier Modelling Lab, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal, India</a></p>
-        <p class="role-date">Aug 2021 &ndash; Mar 2022</p>
-        <p>Developed a custom SRGAN to spatially downscale IMD gridded rainfall from 1.00&deg; to 0.25&deg; over India, leading the full architecture design, implementation and tuning.</p>
-        <p class="supervisors"><span class="sup-tag">Supervisor</span> <a href="https://home.iiserb.ac.in/~kumarp/index.html" target="_blank" class="advisor-link">Dr. Pankaj Kumar</a></p>
+        <div class="timeline-text">
+          <h4>Research Intern &mdash; Deep Learning-Based Downscaling (GANs)</h4>
+          <p class="role-place">Climate &amp; Glacier Modelling Lab, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal, India</a></p>
+          <p class="role-date">Aug 2021 &ndash; Mar 2022</p>
+          <p>Developed a custom SRGAN to spatially downscale IMD gridded rainfall from 1.00&deg; to 0.25&deg; over India, leading the full architecture design, implementation and tuning.</p>
+          <p class="supervisors"><span class="sup-tag">Supervisor</span> <a href="https://home.iiserb.ac.in/~kumarp/index.html" target="_blank" class="advisor-link">Dr. Pankaj Kumar</a></p>
+        </div>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track">
+            <div class="carousel-slide" style="background:#8a7d6b"><span>IISER Photo 1</span></div>
+            <div class="carousel-slide" style="background:#a89d8b"><span>IISER Photo 2</span></div>
+            <div class="carousel-slide" style="background:#7a6d5b"><span>IISER Photo 3</span></div>
+          </div>
+          <button class="carousel-arrow prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-arrow next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-dots"></div>
+        </div>
       </div>
       <div class="timeline-item fade-in">
-        <h4>Summer Research Intern &mdash; Spatial Downscaling Using CNNs</h4>
-        <p class="role-place">Climate &amp; Glacier Modelling Lab, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal, India</a></p>
-        <p class="role-date">Apr 2021 &ndash; Jul 2021</p>
-        <p>Applied SRCNN and SRResNet super-resolution techniques to downscale IMD daily gridded rainfall (1980&ndash;2010); published as a first-author comparative assessment in <em>SN Computer Science</em>.</p>
-        <p class="supervisors"><span class="sup-tag">Supervisor</span> <a href="https://home.iiserb.ac.in/~kumarp/index.html" target="_blank" class="advisor-link">Dr. Pankaj Kumar</a></p>
+        <div class="timeline-text">
+          <h4>Summer Research Intern &mdash; Spatial Downscaling Using CNNs</h4>
+          <p class="role-place">Climate &amp; Glacier Modelling Lab, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal, India</a></p>
+          <p class="role-date">Apr 2021 &ndash; Jul 2021</p>
+          <p>Applied SRCNN and SRResNet super-resolution techniques to downscale IMD daily gridded rainfall (1980&ndash;2010); published as a first-author comparative assessment in <em>SN Computer Science</em>.</p>
+          <p class="supervisors"><span class="sup-tag">Supervisor</span> <a href="https://home.iiserb.ac.in/~kumarp/index.html" target="_blank" class="advisor-link">Dr. Pankaj Kumar</a></p>
+        </div>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track">
+            <div class="carousel-slide" style="background:#7a8d6b"><span>CNN Photo 1</span></div>
+            <div class="carousel-slide" style="background:#9aad8b"><span>CNN Photo 2</span></div>
+            <div class="carousel-slide" style="background:#6a7d5b"><span>CNN Photo 3</span></div>
+            <div class="carousel-slide" style="background:#8a9d7b"><span>CNN Photo 4</span></div>
+          </div>
+          <button class="carousel-arrow prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-arrow next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-dots"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -842,6 +934,77 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Carousels
+(function(){
+  var allCarousels = document.querySelectorAll('[data-carousel]');
+  var instances = [];
+  var activeCarousel = null;
+
+  allCarousels.forEach(function(el){
+    var track = el.querySelector('.carousel-track');
+    var slides = el.querySelectorAll('.carousel-slide');
+    var dotsWrap = el.querySelector('.carousel-dots');
+    var prevBtn = el.querySelector('.carousel-arrow.prev');
+    var nextBtn = el.querySelector('.carousel-arrow.next');
+    var count = slides.length;
+    var current = 0;
+    var timer = null;
+    var INTERVAL = 3000;
+
+    // Build dots
+    for(var i=0;i<count;i++){
+      var dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i===0?' active':'');
+      dot.setAttribute('aria-label','Slide '+(i+1));
+      (function(idx){dot.addEventListener('click',function(){goTo(idx)})})(i);
+      dotsWrap.appendChild(dot);
+    }
+    var dots = dotsWrap.querySelectorAll('.carousel-dot');
+
+    function goTo(idx){
+      current = ((idx % count) + count) % count;
+      track.style.transform = 'translateX(-'+current*100+'%)';
+      dots.forEach(function(d,j){d.classList.toggle('active',j===current)});
+    }
+
+    function next(){goTo(current+1)}
+    function prev(){goTo(current-1)}
+
+    function startAuto(){
+      stopAuto();
+      timer = setInterval(next, INTERVAL);
+    }
+    function stopAuto(){
+      if(timer){clearInterval(timer);timer=null}
+    }
+
+    prevBtn.addEventListener('click',function(){prev()});
+    nextBtn.addEventListener('click',function(){next()});
+
+    el.addEventListener('mouseenter',function(){
+      stopAuto();
+      activeCarousel = el;
+      allCarousels.forEach(function(c){
+        if(c!==el) c.classList.add('dimmed');
+      });
+      // Pause all others
+      instances.forEach(function(inst){
+        if(inst.el!==el) inst.stopAuto();
+      });
+    });
+
+    el.addEventListener('mouseleave',function(){
+      activeCarousel = null;
+      allCarousels.forEach(function(c){c.classList.remove('dimmed')});
+      // Resume all
+      instances.forEach(function(inst){inst.startAuto()});
+    });
+
+    startAuto();
+    instances.push({el:el, startAuto:startAuto, stopAuto:stopAuto});
+  });
+})();
 </script>
 </body>
 </html>
