@@ -243,7 +243,7 @@ section{padding:3.5rem 2rem}
 .detail-card .institution{color:var(--teal);font-weight:500;font-size:0.82rem}
 
 /* ─── PUBLICATIONS ─── */
-.pub-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.pub-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem 1.5rem}
 .pub-item{
   display:block;text-decoration:none;color:inherit;
   padding:1.2rem 1.4rem;border-radius:8px;
@@ -253,10 +253,10 @@ section{padding:3.5rem 2rem}
 }
 .pub-item:hover{
   border-left-color:var(--coral);color:inherit;
-  box-shadow:0 6px 24px var(--card-shadow);transform:translateY(-2px);
+  box-shadow:0 6px 24px var(--card-shadow);transform:translateY(-2px) scale(1.02);
 }
 .pub-item-nolink{cursor:default}
-.pub-item-nolink:hover{transform:none}
+.pub-item-nolink:hover{transform:scale(1.02)}
 .pub-status.status-revision{background:rgba(204,163,0,0.15);color:#b8930a}
 .pub-status.status-prep{background:rgba(200,70,50,0.12);color:#c44632}
 .pub-item .pub-tag{
