@@ -308,7 +308,7 @@ section{padding:3.5rem 2rem}
   text-transform:uppercase;color:var(--coral);margin-bottom:0.4rem;
 }
 .pub-modal-title{
-  font-family:'Newsreader',serif;font-size:1.15rem;font-weight:500;
+  font-family:'Newsreader',serif;font-size:1.28rem;font-weight:500;
   color:var(--deep);line-height:1.4;margin-bottom:0.7rem;
   padding-right:2rem;
 }
@@ -321,14 +321,17 @@ section{padding:3.5rem 2rem}
 }
 .pub-modal-affiliations sup{color:var(--coral);font-weight:600;margin-right:0.15rem}
 .pub-modal-authors sup{color:var(--coral);font-size:0.6rem;font-weight:600;margin:0 0.05rem}
+.pub-modal-journal-row{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:0.8rem;margin-bottom:1rem;flex-wrap:wrap;
+}
 .pub-modal-journal{
   font-size:0.8rem;color:var(--teal);font-style:italic;
-  margin-bottom:0.2rem;
 }
 .pub-modal .pub-status{
   display:inline-block;font-size:0.65rem;padding:0.15rem 0.6rem;
   border-radius:100px;background:rgba(196,112,90,0.12);
-  color:var(--coral);font-weight:500;margin-top:0.25rem;margin-bottom:1rem;
+  color:var(--coral);font-weight:500;flex-shrink:0;
 }
 .pub-modal .pub-status.status-revision{background:rgba(204,163,0,0.15);color:#b8930a}
 .pub-modal .pub-status.status-prep{background:rgba(200,70,50,0.12);color:#c44632}
@@ -337,10 +340,10 @@ section{padding:3.5rem 2rem}
 }
 .pub-modal-abstract-heading{
   font-size:0.68rem;font-weight:600;letter-spacing:0.12em;
-  text-transform:uppercase;color:var(--teal);margin-bottom:0.4rem;
+  text-transform:uppercase;color:var(--deep);margin-bottom:0.4rem;
 }
 .pub-modal-abstract{
-  font-size:0.84rem;color:var(--text-light);line-height:1.75;
+  font-size:0.84rem;color:var(--text-light);line-height:1.6;
   margin-bottom:1.4rem;text-align:justify;
 }
 .pub-modal-link{
@@ -999,8 +1002,10 @@ footer{
     <h3 class="pub-modal-title" id="pmTitle"></h3>
     <p class="pub-modal-authors" id="pmAuthors"></p>
     <div class="pub-modal-affiliations" id="pmAffiliations"></div>
-    <p class="pub-modal-journal" id="pmJournal"></p>
-    <div id="pmStatusWrap"></div>
+    <div class="pub-modal-journal-row">
+      <p class="pub-modal-journal" id="pmJournal"></p>
+      <span id="pmStatusWrap"></span>
+    </div>
     <hr class="pub-modal-divider">
     <p class="pub-modal-abstract-heading">Abstract</p>
     <p class="pub-modal-abstract" id="pmAbstract"></p>
