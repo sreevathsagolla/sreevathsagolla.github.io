@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sreevathsa Golla — PhD Researcher in Oceanography &amp; Climate Science at the University of Southampton &amp; National Oceanography Centre. Studying ENSO dynamics, ocean modelling, and AI/ML applications in climate science.">
 <title>SG - Hey! 👋</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -131,8 +132,8 @@ nav.scrolled{box-shadow:0 2px 30px rgba(27,45,69,0.08)}
 }
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.7) 100%)}
-[data-theme="dark"] .hero-overlay{background:linear-gradient(to bottom,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.85) 100%)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.45) 40%,rgba(0,0,0,0.7) 100%)}
+[data-theme="dark"] .hero-overlay{background:linear-gradient(135deg,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.6) 40%,rgba(0,0,0,0.88) 100%)}
 .hero-inner{
   max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;
   display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:center;
@@ -175,7 +176,7 @@ nav.scrolled{box-shadow:0 2px 30px rgba(27,45,69,0.08)}
 .hero-links .secondary{
   border:1.5px solid var(--teal);color:#fff;background:var(--teal);
 }
-.hero-links .secondary:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6)}
+.hero-links .secondary:hover{background:var(--teal-light);border-color:var(--teal-light);color:#fff}
 
 .hero-photo{
   animation:fadeUp .8s ease .2s both;
@@ -256,6 +257,7 @@ section{padding:3.5rem 2rem}
 }
 .pub-item-nolink{cursor:default}
 .pub-item-nolink:hover{transform:none}
+.pub-item:last-child:nth-child(odd){grid-column:1 / -1}
 .pub-status.status-revision{background:rgba(204,163,0,0.15);color:#b8930a}
 .pub-status.status-prep{background:rgba(200,70,50,0.12);color:#c44632}
 .pub-item .pub-tag{
@@ -333,7 +335,7 @@ section{padding:3.5rem 2rem}
   display:flex;gap:5px;z-index:2;
 }
 .carousel-dot{
-  width:6px;height:6px;border-radius:50%;border:none;
+  width:8px;height:8px;border-radius:50%;border:none;
   background:rgba(255,255,255,0.4);cursor:pointer;padding:0;
   transition:background .2s;
 }
@@ -437,11 +439,11 @@ section{padding:3.5rem 2rem}
 .form-group input:focus,.form-group textarea:focus{outline:none;border-color:#6a7d8b}
 .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.3)}
 .form-submit{
-  align-self:flex-start;background:#6a7d8b;color:#fff;border:none;border-radius:4px;
+  align-self:flex-start;background:var(--coral);color:#fff;border:none;border-radius:4px;
   padding:0.7rem 2rem;font-size:0.82rem;font-weight:500;letter-spacing:0.06em;
   text-transform:uppercase;cursor:pointer;transition:background .25s;font-family:'DM Sans',sans-serif;
 }
-.form-submit:hover{background:#8599a6}
+.form-submit:hover{background:var(--warm)}
 .contact-sidebar-title{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#8fadbe;margin-bottom:1.2rem}
 .contact-link-list{display:flex;flex-direction:column;gap:0.7rem}
 .contact-link-list a{
@@ -451,6 +453,26 @@ section{padding:3.5rem 2rem}
 }
 .contact-link-list a:hover{background:rgba(255,255,255,0.06);border-color:#6a7d8b;color:#8fadbe}
 .contact-link-list a i{font-size:1.1rem;width:20px;text-align:center;color:#8fadbe}
+
+/* ─── SCROLL PROGRESS ─── */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:2.5px;z-index:200;
+  background:linear-gradient(90deg,var(--teal),var(--coral));
+  width:0%;transition:none;pointer-events:none;
+}
+
+/* ─── BACK TO TOP ─── */
+.back-to-top{
+  position:fixed;bottom:2rem;right:2rem;z-index:90;
+  width:38px;height:38px;border-radius:50%;border:none;
+  background:var(--teal);color:#fff;font-size:0.85rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(10px);
+  transition:opacity .3s,transform .3s,background .2s;
+  pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+.back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.back-to-top:hover{background:var(--coral)}
 
 /* ─── FOOTER ─── */
 footer{
@@ -885,6 +907,9 @@ footer{
   </div>
 </section>
 
+<div class="scroll-progress" id="scrollProgress"></div>
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
 <footer>
   <p>&copy; 2026 Sreevathsa Golla. Built for the curious.</p>
 </footer>
@@ -923,6 +948,22 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     document.getElementById('navLinks').classList.remove('open');
   });
 });
+
+// Scroll progress bar & back-to-top
+(function(){
+  var bar = document.getElementById('scrollProgress');
+  var btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function(){
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = pct + '%';
+    btn.classList.toggle('visible', scrollTop > 400);
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
 
 // Fade-in on scroll
 const observer = new IntersectionObserver((entries) => {
