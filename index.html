@@ -255,8 +255,6 @@ section{padding:3.5rem 2rem}
   border-left-color:var(--coral);color:inherit;
   box-shadow:0 6px 24px var(--card-shadow);transform:translateY(-2px) scale(1.03);
 }
-.pub-item-nolink{cursor:default}
-.pub-item-nolink.fade-in.visible:hover{transform:scale(1.03)}
 .pub-status.status-revision{background:rgba(204,163,0,0.15);color:#b8930a}
 .pub-status.status-prep{background:rgba(200,70,50,0.12);color:#c44632}
 .pub-item .pub-tag{
@@ -273,6 +271,88 @@ section{padding:3.5rem 2rem}
   display:inline-block;font-size:0.65rem;padding:0.15rem 0.6rem;
   border-radius:100px;background:rgba(196,112,90,0.12);
   color:var(--coral);font-weight:500;margin-top:0.35rem;
+}
+
+/* ─── PUBLICATION MODAL ─── */
+.pub-modal-overlay{
+  position:fixed;inset:0;z-index:1000;
+  background:rgba(248,246,242,0.82);
+  backdrop-filter:blur(4px);
+  display:none;align-items:center;justify-content:center;
+  padding:2rem;
+}
+[data-theme="dark"] .pub-modal-overlay{background:rgba(20,24,32,0.85)}
+.pub-modal-overlay.active{display:flex}
+.pub-modal{
+  position:relative;
+  width:100%;max-width:720px;max-height:85vh;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:0 20px 60px rgba(27,45,69,0.12),0 2px 8px rgba(27,45,69,0.06);
+  overflow-y:auto;
+  padding:2.5rem 2.8rem 2rem;
+}
+[data-theme="dark"] .pub-modal{box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.pub-modal-close{
+  position:absolute;top:1rem;left:1rem;
+  width:32px;height:32px;border-radius:50%;border:none;
+  background:var(--sand);color:var(--text-light);
+  font-size:0.85rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;z-index:1;
+}
+.pub-modal-close:hover{background:var(--coral);color:#fff}
+.pub-modal-tag{
+  font-size:0.65rem;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--coral);margin-bottom:0.6rem;
+}
+.pub-modal-title{
+  font-family:'Newsreader',serif;font-size:1.35rem;font-weight:500;
+  color:var(--deep);line-height:1.4;margin-bottom:1rem;
+}
+.pub-modal-authors{
+  font-size:0.88rem;color:var(--text);line-height:1.7;margin-bottom:0.4rem;
+}
+.pub-modal-authors .last-name{font-weight:600}
+.pub-modal-affiliations{
+  font-size:0.78rem;color:var(--text-light);line-height:1.7;
+  margin-bottom:1rem;padding-left:0.2rem;
+}
+.pub-modal-affiliations sup{color:var(--coral);font-weight:600;margin-right:0.15rem}
+.pub-modal-authors sup{color:var(--coral);font-size:0.65rem;font-weight:600;margin:0 0.05rem}
+.pub-modal-journal{
+  font-size:0.85rem;color:var(--teal);font-style:italic;
+  margin-bottom:0.3rem;
+}
+.pub-modal-status{
+  display:inline-block;font-size:0.65rem;padding:0.15rem 0.6rem;
+  border-radius:100px;font-weight:500;margin-bottom:1.5rem;
+}
+.pub-modal-divider{
+  border:none;border-top:1px solid var(--border);margin:0 0 1.2rem;
+}
+.pub-modal-abstract-heading{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:0.6rem;
+}
+.pub-modal-abstract{
+  font-size:0.88rem;color:var(--text-light);line-height:1.8;
+  margin-bottom:1.8rem;text-align:justify;
+}
+.pub-modal-link{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.82rem;font-weight:500;letter-spacing:0.06em;
+  text-transform:uppercase;text-decoration:none;
+  padding:0.65rem 1.6rem;border-radius:4px;
+  background:var(--coral);color:#fff;
+  transition:background .25s;
+}
+.pub-modal-link:hover{background:var(--warm);color:#fff}
+.pub-modal-link i{font-size:0.75rem}
+@media(max-width:640px){
+  .pub-modal{padding:2rem 1.5rem 1.5rem;max-height:90vh}
+  .pub-modal-title{font-size:1.15rem}
 }
 
 /* ─── EXPERIENCE ─── */
@@ -724,38 +804,38 @@ footer{
     <p class="section-label">Research Output</p>
     <h2 class="section-title">Publications</h2>
     <div class="pub-grid">
-      <a href="https://doi.org/10.21203/rs.3.rs-8345018/v1" target="_blank" class="pub-item fade-in">
+      <div class="pub-item fade-in" data-pub="0">
         <div class="pub-tag">First Author</div>
         <h4>Characterising surface discrepancies and vertical coherence of ocean temperature anomalies in CMIP6 HighResMIP during ENSO events</h4>
         <p class="pub-authors"><strong>Golla, S.</strong>, Hirschi, J. J.-M., Blaker, A. T., Mecking, J., Kelly, S. &amp; Marsh, R. (2026)</p>
         <p class="pub-journal">Climate Dynamics (Preprint)</p>
         <span class="pub-status status-revision">In Revision - Original Preprint Available!</span>
-      </a>
-      <div class="pub-item pub-item-nolink fade-in">
+      </div>
+      <div class="pub-item fade-in" data-pub="1">
         <div class="pub-tag">First Author</div>
         <h4>Modulation of thermocline feedback by westerly wind bursts and surface wind forcing during El Ni&ntilde;o development in an ocean-only model</h4>
         <p class="pub-authors"><strong>Golla, S.</strong>, Hirschi, J. J.-M., Blaker, A. T., Mecking, J., Kelly, S. &amp; Marsh, R.</p>
         <p class="pub-journal">Journal of Geophysical Research: Oceans</p>
         <span class="pub-status status-prep">In Preparation</span>
       </div>
-      <a href="https://doi.org/10.1007/s42979-024-02653-3" target="_blank" class="pub-item fade-in">
+      <div class="pub-item fade-in" data-pub="2">
         <div class="pub-tag">First Author &middot; 2024</div>
         <h4>Comparative assessment of image super-resolution techniques for spatial downscaling of gridded rainfall data</h4>
         <p class="pub-authors"><strong>Golla, S.</strong>, Murukesh, M. &amp; Kumar, P. (2024)</p>
         <p class="pub-journal">SN Computer Science, 5. DOI: 10.1007/s42979-024-02653-3</p>
-      </a>
-      <a href="https://doi.org/10.1029/2025JC022762" target="_blank" class="pub-item fade-in">
+      </div>
+      <div class="pub-item fade-in" data-pub="3">
         <div class="pub-tag">Co-Author &middot; 2025</div>
         <h4>Warming trend in the western Indian Ocean driven by oceanic transport</h4>
         <p class="pub-authors">Joseph, L., Dey, D., Skliris, N., Sanchez-Franks, A., Marsh, R., Hirschi, J. &amp; <strong>Golla, S.</strong> (2025)</p>
         <p class="pub-journal">Journal of Geophysical Research: Oceans, 131(1)</p>
-      </a>
-      <a href="https://doi.org/10.1007/s40808-023-01899-9" target="_blank" class="pub-item fade-in">
+      </div>
+      <div class="pub-item fade-in" data-pub="4">
         <div class="pub-tag">Co-Author &middot; 2023</div>
         <h4>Downscaling and reconstruction of high-resolution gridded rainfall data over India using deep learning-based generative adversarial network</h4>
         <p class="pub-authors">Murukesh, M., <strong>Golla, S.</strong> &amp; Kumar, P. (2023)</p>
         <p class="pub-journal">Modeling Earth Systems and Environment, 10, 2221&ndash;2237</p>
-      </a>
+      </div>
     </div>
   </div>
 </section>
@@ -908,6 +988,23 @@ footer{
   </div>
 </section>
 
+<!-- PUBLICATION MODAL -->
+<div class="pub-modal-overlay" id="pubModalOverlay">
+  <div class="pub-modal">
+    <button class="pub-modal-close" id="pubModalClose" aria-label="Close"><i class="fas fa-times"></i></button>
+    <div class="pub-modal-tag" id="pmTag"></div>
+    <h3 class="pub-modal-title" id="pmTitle"></h3>
+    <p class="pub-modal-authors" id="pmAuthors"></p>
+    <div class="pub-modal-affiliations" id="pmAffiliations"></div>
+    <p class="pub-modal-journal" id="pmJournal"></p>
+    <div id="pmStatusWrap"></div>
+    <hr class="pub-modal-divider">
+    <p class="pub-modal-abstract-heading">Abstract</p>
+    <p class="pub-modal-abstract" id="pmAbstract"></p>
+    <div id="pmLinkWrap"></div>
+  </div>
+</div>
+
 <div class="scroll-progress" id="scrollProgress"></div>
 <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
@@ -1046,6 +1143,111 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     startAuto();
     instances.push({el:el, startAuto:startAuto, stopAuto:stopAuto});
+  });
+})();
+
+// Publication modal
+(function(){
+  var LOREM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor.';
+
+  var pubs = [
+    {
+      tag: 'First Author',
+      title: 'Characterising surface discrepancies and vertical coherence of ocean temperature anomalies in CMIP6 HighResMIP during ENSO events',
+      authors: '<span class="last-name">Golla</span>, Sreevathsa<sup>1,2</sup>; <span class="last-name">Hirschi</span>, Jo\u00ebl J.-M.<sup>2</sup>; <span class="last-name">Blaker</span>, Adam T.<sup>2</sup>; <span class="last-name">Mecking</span>, Jennifer<sup>2</sup>; <span class="last-name">Kelly</span>, Stephen<sup>2</sup> &amp; <span class="last-name">Marsh</span>, Robert<sup>1</sup>',
+      affiliations: '<sup>1</sup> School of Ocean and Earth Science, University of Southampton, Southampton, UK<br><sup>2</sup> National Oceanography Centre, Southampton, UK',
+      journal: 'Climate Dynamics (Preprint) \u2014 2026',
+      status: '<span class="pub-modal-status status-revision">In Revision \u2014 Original Preprint Available</span>',
+      abstract: LOREM,
+      link: 'https://doi.org/10.21203/rs.3.rs-8345018/v1',
+      linkLabel: 'View Preprint'
+    },
+    {
+      tag: 'First Author',
+      title: 'Modulation of thermocline feedback by westerly wind bursts and surface wind forcing during El Ni\u00f1o development in an ocean-only model',
+      authors: '<span class="last-name">Golla</span>, Sreevathsa<sup>1,2</sup>; <span class="last-name">Hirschi</span>, Jo\u00ebl J.-M.<sup>2</sup>; <span class="last-name">Blaker</span>, Adam T.<sup>2</sup>; <span class="last-name">Mecking</span>, Jennifer<sup>2</sup>; <span class="last-name">Kelly</span>, Stephen<sup>2</sup> &amp; <span class="last-name">Marsh</span>, Robert<sup>1</sup>',
+      affiliations: '<sup>1</sup> School of Ocean and Earth Science, University of Southampton, Southampton, UK<br><sup>2</sup> National Oceanography Centre, Southampton, UK',
+      journal: 'Journal of Geophysical Research: Oceans',
+      status: '<span class="pub-modal-status status-prep">In Preparation</span>',
+      abstract: LOREM,
+      link: null,
+      linkLabel: null
+    },
+    {
+      tag: 'First Author \u00b7 2024',
+      title: 'Comparative assessment of image super-resolution techniques for spatial downscaling of gridded rainfall data',
+      authors: '<span class="last-name">Golla</span>, Sreevathsa<sup>1</sup>; <span class="last-name">Murukesh</span>, M.<sup>1</sup> &amp; <span class="last-name">Kumar</span>, Pankaj<sup>1</sup>',
+      affiliations: '<sup>1</sup> Department of Earth and Environmental Sciences, IISER Bhopal, India',
+      journal: 'SN Computer Science, 5 \u2014 2024. DOI: 10.1007/s42979-024-02653-3',
+      status: '',
+      abstract: LOREM,
+      link: 'https://doi.org/10.1007/s42979-024-02653-3',
+      linkLabel: 'View Full Text'
+    },
+    {
+      tag: 'Co-Author \u00b7 2025',
+      title: 'Warming trend in the western Indian Ocean driven by oceanic transport',
+      authors: '<span class="last-name">Joseph</span>, Lina<sup>1,2</sup>; <span class="last-name">Dey</span>, Dipanjan<sup>2</sup>; <span class="last-name">Skliris</span>, Nikolaos<sup>1</sup>; <span class="last-name">Sanchez-Franks</span>, Alejandra<sup>2</sup>; <span class="last-name">Marsh</span>, Robert<sup>1</sup>; <span class="last-name">Hirschi</span>, Jo\u00ebl<sup>2</sup> &amp; <span class="last-name">Golla</span>, Sreevathsa<sup>1,2</sup>',
+      affiliations: '<sup>1</sup> School of Ocean and Earth Science, University of Southampton, Southampton, UK<br><sup>2</sup> National Oceanography Centre, Southampton, UK',
+      journal: 'Journal of Geophysical Research: Oceans, 131(1) \u2014 2025',
+      status: '',
+      abstract: LOREM,
+      link: 'https://doi.org/10.1029/2025JC022762',
+      linkLabel: 'View Full Text'
+    },
+    {
+      tag: 'Co-Author \u00b7 2023',
+      title: 'Downscaling and reconstruction of high-resolution gridded rainfall data over India using deep learning-based generative adversarial network',
+      authors: '<span class="last-name">Murukesh</span>, M.<sup>1</sup>; <span class="last-name">Golla</span>, Sreevathsa<sup>1</sup> &amp; <span class="last-name">Kumar</span>, Pankaj<sup>1</sup>',
+      affiliations: '<sup>1</sup> Department of Earth and Environmental Sciences, IISER Bhopal, India',
+      journal: 'Modeling Earth Systems and Environment, 10, 2221\u20132237 \u2014 2023',
+      status: '',
+      abstract: LOREM,
+      link: 'https://doi.org/10.1007/s40808-023-01899-9',
+      linkLabel: 'View Full Text'
+    }
+  ];
+
+  var overlay = document.getElementById('pubModalOverlay');
+  var closeBtn = document.getElementById('pubModalClose');
+
+  function openModal(idx){
+    var p = pubs[idx];
+    document.getElementById('pmTag').textContent = p.tag;
+    document.getElementById('pmTitle').textContent = p.title;
+    document.getElementById('pmAuthors').innerHTML = p.authors;
+    document.getElementById('pmAffiliations').innerHTML = p.affiliations;
+    document.getElementById('pmJournal').textContent = p.journal;
+    document.getElementById('pmStatusWrap').innerHTML = p.status;
+    document.getElementById('pmAbstract').textContent = p.abstract;
+    var linkWrap = document.getElementById('pmLinkWrap');
+    if(p.link){
+      linkWrap.innerHTML = '<a href="'+p.link+'" target="_blank" class="pub-modal-link"><i class="fas fa-external-link-alt"></i> '+p.linkLabel+'</a>';
+    } else {
+      linkWrap.innerHTML = '';
+    }
+    overlay.classList.add('active');
+  }
+
+  function closeModal(){
+    overlay.classList.remove('active');
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+
+  // Only close via the X button, not by clicking the overlay
+  overlay.addEventListener('click', function(e){ e.stopPropagation(); });
+
+  document.querySelectorAll('[data-pub]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      openModal(parseInt(el.getAttribute('data-pub')));
+    });
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
   });
 })();
 </script>
