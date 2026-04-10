@@ -447,10 +447,10 @@ section{padding:3.5rem 2rem}
 .carousel-dot.active{background:rgba(255,255,255,0.9)}
 
 /* ─── CONFERENCES ─── */
-.conf-grid{display:flex;flex-direction:column;gap:1.4rem}
+.conf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
 .conf-card{
-  display:grid;grid-template-columns:1fr 280px;gap:2rem;align-items:stretch;
-  padding:1.5rem;border-radius:12px;
+  display:grid;grid-template-columns:1fr 140px;gap:1rem;align-items:center;
+  padding:1.2rem 1.4rem;border-radius:10px;
   background:var(--sand);transition:all .25s;
 }
 .conf-card:hover{box-shadow:0 4px 20px rgba(27,45,69,0.06)}
@@ -463,7 +463,19 @@ section{padding:3.5rem 2rem}
   color:var(--deep);line-height:1.5;margin-bottom:0.3rem;
 }
 .conf-card p{font-size:0.82rem;color:var(--text-light)}
-.conf-card .carousel{min-height:180px}
+.conf-card .carousel{
+  aspect-ratio:4/3;width:100%;height:auto;min-height:auto;
+  border-radius:8px;background:#ece8e2;
+}
+[data-theme="dark"] .conf-card .carousel{background:#2a2f38}
+.conf-card .carousel-slide{
+  background:#ece8e2;
+}
+[data-theme="dark"] .conf-card .carousel-slide{background:#2a2f38}
+.conf-card .carousel-slide img{
+  width:auto;height:100%;object-fit:contain;
+  display:block;margin:0 auto;
+}
 .conf-meta{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.4rem}
 .pres-type{
   font-size:0.68rem;font-weight:600;padding:0.15rem 0.6rem;
@@ -637,8 +649,8 @@ footer{
   .nav-icons{display:none}
   .hero-text h1{font-size:2rem}
   section{padding:2.5rem 1.5rem}
-  .conf-card{grid-template-columns:1fr}
-  .conf-card .carousel{max-width:340px;min-height:200px;margin-top:0.5rem}
+  .conf-grid{grid-template-columns:1fr}
+  .conf-card{grid-template-columns:1fr 140px}
 }
 </style>
 </head>
