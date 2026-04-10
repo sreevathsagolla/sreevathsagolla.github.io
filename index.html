@@ -447,9 +447,10 @@ section{padding:3.5rem 2rem}
 .carousel-dot.active{background:rgba(255,255,255,0.9)}
 
 /* ─── CONFERENCES ─── */
-.conf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.conf-grid{display:flex;flex-direction:column;gap:1.4rem}
 .conf-card{
-  padding:1.5rem;border-radius:10px;
+  display:grid;grid-template-columns:1fr 280px;gap:2rem;align-items:stretch;
+  padding:1.5rem;border-radius:12px;
   background:var(--sand);transition:all .25s;
 }
 .conf-card:hover{box-shadow:0 4px 20px rgba(27,45,69,0.06)}
@@ -462,6 +463,7 @@ section{padding:3.5rem 2rem}
   color:var(--deep);line-height:1.5;margin-bottom:0.3rem;
 }
 .conf-card p{font-size:0.82rem;color:var(--text-light)}
+.conf-card .carousel{min-height:180px}
 .conf-meta{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.4rem}
 .pres-type{
   font-size:0.68rem;font-weight:600;padding:0.15rem 0.6rem;
@@ -470,6 +472,18 @@ section{padding:3.5rem 2rem}
 .pres-oral{background:rgba(61,139,148,0.12);color:var(--teal)}
 .pres-poster{background:rgba(107,142,95,0.12);color:#5a7d50}
 [data-theme="dark"] .pres-poster{color:#8ab57e}
+.other-pres{margin-top:2rem}
+.other-pres-title{
+  font-family:'Newsreader',serif;font-size:1.1rem;font-weight:500;
+  color:var(--deep);margin-bottom:0.8rem;
+}
+.other-pres-list{display:flex;flex-direction:column;gap:0.5rem}
+.other-pres-item{
+  display:flex;align-items:flex-start;gap:0.6rem;
+  padding:0.6rem 1rem;border-radius:8px;background:var(--sand);
+  font-size:0.85rem;color:var(--text-light);
+}
+.other-pres-item .teaching-bullet{margin-top:0.45rem}
 
 /* ─── SKILLS ─── */
 #skills{background:var(--sand)}
@@ -623,7 +637,8 @@ footer{
   .nav-icons{display:none}
   .hero-text h1{font-size:2rem}
   section{padding:2.5rem 1.5rem}
-  .conf-grid{grid-template-columns:1fr}
+  .conf-card{grid-template-columns:1fr}
+  .conf-card .carousel{max-width:340px;min-height:200px;margin-top:0.5rem}
 }
 </style>
 </head>
@@ -873,36 +888,74 @@ footer{
     <h2 class="section-title">Presentations</h2>
     <div class="conf-grid">
       <div class="conf-card fade-in">
-        <div class="conf-meta">
-          <p class="conf-year">2026</p>
-          <span class="pres-type pres-poster">Poster</span>
+        <div class="conf-text">
+          <div class="conf-meta">
+            <p class="conf-year">2026</p>
+            <span class="pres-type pres-poster">Poster</span>
+          </div>
+          <h4>Wind modulation of thermocline feedback during development of El Ni&ntilde;o</h4>
+          <p>Ocean Sciences Meeting 2026 &middot; Glasgow, United Kingdom</p>
         </div>
-        <h4>Wind modulation of thermocline feedback during development of El Ni&ntilde;o</h4>
-        <p>Ocean Sciences Meeting 2026 &middot; Glasgow, United Kingdom</p>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="assets/picture_assets_carousel/OSM_2026/OSM_2026_PIC1.jpg" alt="OSM 2026 poster" loading="lazy"></div>
+            <div class="carousel-slide"><img src="assets/picture_assets_carousel/OSM_2026/OSM_2026_PIC2.jpg" alt="OSM 2026 poster" loading="lazy"></div>
+            <div class="carousel-slide"><img src="assets/picture_assets_carousel/OSM_2026/OSM_2026_PIC3.jpg" alt="OSM 2026 poster" loading="lazy"></div>
+          </div>
+          <button class="carousel-arrow prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-arrow next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-dots"></div>
+        </div>
       </div>
       <div class="conf-card fade-in">
-        <div class="conf-meta">
-          <p class="conf-year">2024</p>
-          <span class="pres-type pres-poster">Poster</span>
+        <div class="conf-text">
+          <div class="conf-meta">
+            <p class="conf-year">2024</p>
+            <span class="pres-type pres-poster">Poster</span>
+          </div>
+          <h4>Surface discrepancies and vertical coherence of ocean temperature anomalies during ENSO</h4>
+          <p>AGU Fall Meeting 2024 &middot; Washington D.C., USA</p>
         </div>
-        <h4>Surface discrepancies and vertical coherence of ocean temperature anomalies during ENSO</h4>
-        <p>AGU Fall Meeting 2024 &middot; Washington D.C., USA</p>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="assets/picture_assets_carousel/AGU_2024/AGU_2024_PIC1.jpg" alt="AGU 2024 poster" loading="lazy"></div>
+            <div class="carousel-slide"><img src="assets/picture_assets_carousel/AGU_2024/AGU_2024_PIC2.jpg" alt="AGU 2024 poster" loading="lazy"></div>
+            <div class="carousel-slide"><img src="assets/picture_assets_carousel/AGU_2024/AGU_2024_PIC3.jpg" alt="AGU 2024 poster" loading="lazy"></div>
+          </div>
+          <button class="carousel-arrow prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-arrow next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-dots"></div>
+        </div>
       </div>
       <div class="conf-card fade-in">
-        <div class="conf-meta">
-          <p class="conf-year">2024</p>
-          <span class="pres-type pres-poster">Poster</span>
+        <div class="conf-text">
+          <div class="conf-meta">
+            <p class="conf-year">2024</p>
+            <span class="pres-type pres-poster">Poster</span>
+          </div>
+          <h4>Dynamical evolution of ENSO in a warming background: recent trends &amp; future projections</h4>
+          <p>EGU General Assembly 2024 &middot; Vienna, Austria</p>
         </div>
-        <h4>Dynamical evolution of ENSO in a warming background: recent trends &amp; future projections</h4>
-        <p>EGU General Assembly 2024 &middot; Vienna, Austria</p>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="assets/picture_assets_carousel/EGU_2024/EGU_2024_PIC1.jpg" alt="EGU 2024 poster" loading="lazy"></div>
+            <div class="carousel-slide"><img src="assets/picture_assets_carousel/EGU_2024/EGU_2024_PIC2.jpg" alt="EGU 2024 poster" loading="lazy"></div>
+            <div class="carousel-slide"><img src="assets/picture_assets_carousel/EGU_2024/EGU_2024_PIC3.jpg" alt="EGU 2024 poster" loading="lazy"></div>
+          </div>
+          <button class="carousel-arrow prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-arrow next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-dots"></div>
+        </div>
       </div>
-      <div class="conf-card fade-in">
-        <div class="conf-meta">
-          <p class="conf-year">2023</p>
-          <span class="pres-type pres-poster">Poster</span>
+    </div>
+
+    <div class="other-pres">
+      <p class="other-pres-title">Other presentations:</p>
+      <div class="other-pres-list">
+        <div class="other-pres-item fade-in">
+          <span class="teaching-bullet"></span>
+          <div><strong>Spatial downscaling of IMD gridded rainfall using SRCNN &amp; SRResNet</strong> &mdash; Poster, Frontiers in Geosciences Research (FGRC) 2023 &middot; PRL, Ahmedabad, India</div>
         </div>
-        <h4>Spatial downscaling of IMD gridded rainfall using SRCNN &amp; SRResNet</h4>
-        <p>Frontiers in Geosciences Research (FGRC) 2023 &middot; PRL, Ahmedabad, India</p>
       </div>
     </div>
   </div>
