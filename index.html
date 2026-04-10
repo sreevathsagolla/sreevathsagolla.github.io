@@ -146,22 +146,22 @@ nav.scrolled{box-shadow:0 2px 30px rgba(27,45,69,0.08)}
 
 /* ─── HERO ─── */
 .hero{
-  min-height:100vh;display:flex;align-items:center;
-  padding:8rem 2rem 4rem;
+  min-height:80vh;display:flex;align-items:center;
+  padding:6rem 2rem 3rem;
   position:relative;overflow:hidden;
 }
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.7) 100%)}
 [data-theme="dark"] .hero-overlay{background:linear-gradient(to bottom,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.85) 100%)}
 .hero-inner{
   max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;
-  display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:center;
+  display:grid;grid-template-columns:1fr 320px;gap:3rem;align-items:center;
 }
 .hero-text{color:#fff}
 .hero-text h1{
-  font-family:'Newsreader',serif;font-size:3.2rem;font-weight:400;
-  color:#fff;line-height:1.2;margin-bottom:0.6rem;
+  font-family:'Newsreader',serif;font-size:2.8rem;font-weight:400;
+  color:#fff;line-height:1.2;margin-bottom:0.5rem;
   animation:fadeUp .8s ease both;
 }
 .hero-text h1 span{
@@ -170,8 +170,8 @@ nav.scrolled{box-shadow:0 2px 30px rgba(27,45,69,0.08)}
   margin-top:0.8rem;font-family:'DM Sans',sans-serif;
 }
 .hero-text .tagline{
-  font-size:1.08rem;color:rgba(255,255,255,0.8);line-height:1.8;
-  max-width:520px;margin:1.5rem 0 0.8rem;
+  font-size:1rem;color:rgba(255,255,255,0.8);line-height:1.7;
+  max-width:520px;margin:1.2rem 0 0.6rem;
   animation:fadeUp .8s ease .15s both;
 }
 .hero-links{
@@ -185,7 +185,7 @@ nav.scrolled{box-shadow:0 2px 30px rgba(27,45,69,0.08)}
   transition:all .25s;
 }
 .hero-location{
-  font-size:0.88rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem;
+  font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:1.2rem;
   animation:fadeUp .8s ease .22s both;display:flex;align-items:center;gap:0.4rem;
 }
 .hero-location .location-pin{color:var(--teal-light);opacity:0.7;flex-shrink:0}
@@ -214,7 +214,7 @@ nav.scrolled{box-shadow:0 2px 30px rgba(27,45,69,0.08)}
 }
 
 /* ─── SECTION BASE ─── */
-section{padding:3.5rem 2rem}
+section{padding:2.5rem 2rem}
 .section-inner{max-width:1100px;margin:0 auto}
 .section-label{
   font-size:0.75rem;font-weight:500;letter-spacing:0.15em;
@@ -223,7 +223,11 @@ section{padding:3.5rem 2rem}
 }
 .section-title{
   font-family:'Newsreader',serif;font-size:2rem;font-weight:400;
-  color:var(--deep);margin-bottom:2rem;line-height:1.3;
+  color:var(--deep);margin-bottom:1.5rem;line-height:1.3;
+}
+.section-hint{
+  font-size:0.76rem;color:var(--text-light);opacity:0.7;
+  margin-top:-1rem;margin-bottom:1.5rem;font-style:italic;
 }
 
 /* ─── WAVE DIVIDER ─── */
@@ -275,8 +279,6 @@ section{padding:3.5rem 2rem}
   border-left-color:var(--coral);color:inherit;
   box-shadow:0 6px 24px var(--card-shadow);transform:translateY(-2px) scale(1.03);
 }
-.pub-status.status-revision{background:rgba(204,163,0,0.15);color:#b8930a}
-.pub-status.status-prep{background:rgba(200,70,50,0.12);color:#c44632}
 .pub-item .pub-tag{
   font-size:0.65rem;font-weight:500;letter-spacing:0.1em;
   text-transform:uppercase;color:var(--coral);margin-bottom:0.3rem;
@@ -292,6 +294,8 @@ section{padding:3.5rem 2rem}
   border-radius:100px;background:rgba(196,112,90,0.12);
   color:var(--coral);font-weight:500;margin-top:0.35rem;
 }
+.pub-item .pub-status.status-revision{background:rgba(204,163,0,0.15);color:#b8930a}
+.pub-item .pub-status.status-prep{background:rgba(200,70,50,0.12);color:#c44632}
 
 /* ─── PUBLICATION MODAL ─── */
 .pub-modal-overlay{
@@ -414,6 +418,7 @@ section{padding:3.5rem 2rem}
   position:relative;width:100%;
   background:#ece8e2;display:flex;align-items:center;justify-content:center;
   min-height:300px;max-height:75vh;
+  padding:0.8rem 0.8rem 0;
 }
 [data-theme="dark"] .lightbox-img-wrap{background:#2a2f38}
 .lightbox-img-wrap img{
@@ -690,7 +695,7 @@ footer{
   .hero-location{justify-content:center}
   .hero-links{justify-content:center}
   .hero-photo{max-width:320px;margin:0 auto;order:-1}
-  .hero-text h1{font-size:2.4rem}
+  .hero-text h1{font-size:2.2rem}
   .about-grid{grid-template-columns:1fr}
   .interests-tags{justify-content:center}
   .pub-grid{grid-template-columns:1fr}
@@ -710,8 +715,8 @@ footer{
   .nav-links.open{display:flex}
   .hamburger{display:block}
   .nav-icons{display:none}
-  .hero-text h1{font-size:2rem}
-  section{padding:2.5rem 1.5rem}
+  .hero-text h1{font-size:1.8rem}
+  section{padding:2rem 1.5rem}
   .conf-grid{grid-template-columns:1fr}
   .conf-card{grid-template-columns:1fr 140px}
 }
@@ -832,6 +837,7 @@ footer{
   <div class="section-inner">
     <p class="section-label">Experience</p>
     <h2 class="section-title">Research Journey</h2>
+    <p class="section-hint">Click on any image to view it full-size.</p>
     <div class="timeline">
       <div class="timeline-item fade-in">
         <div class="timeline-text">
@@ -919,6 +925,7 @@ footer{
   <div class="section-inner">
     <p class="section-label">Research Output</p>
     <h2 class="section-title">Publications</h2>
+    <p class="section-hint">Select a paper to read the abstract and access the full text or preprint.</p>
     <div class="pub-grid">
       <div class="pub-item fade-in" data-pub="0">
         <div class="pub-tag">First Author</div>
@@ -961,6 +968,7 @@ footer{
   <div class="section-inner">
     <p class="section-label">Conferences &amp; Talks</p>
     <h2 class="section-title">Presentations</h2>
+    <p class="section-hint">Click on any image to view it full-size.</p>
     <div class="conf-grid">
       <div class="conf-card fade-in">
         <div class="conf-text">
