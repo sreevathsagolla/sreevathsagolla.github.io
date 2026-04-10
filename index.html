@@ -523,17 +523,21 @@ section{padding:3.5rem 2rem}
 }
 .conf-card p{font-size:0.82rem;color:var(--text-light)}
 .conf-card .carousel{
-  aspect-ratio:4/3;width:100%;height:auto;min-height:auto;
-  border-radius:8px;background:#ece8e2;
+  aspect-ratio:3/2;width:100%;height:auto;min-height:auto;
+  border-radius:8px;background:#ece8e2;position:relative;
 }
 [data-theme="dark"] .conf-card .carousel{background:#2a2f38}
+.conf-card .carousel-track{
+  position:absolute;inset:0;height:100%;
+}
 .conf-card .carousel-slide{
+  min-width:100%;height:100%;
   background:#ece8e2;
+  display:flex;align-items:center;justify-content:center;
 }
 [data-theme="dark"] .conf-card .carousel-slide{background:#2a2f38}
 .conf-card .carousel-slide img{
-  width:auto;height:100%;object-fit:contain;
-  display:block;margin:0 auto;
+  width:100%;height:100%;object-fit:contain;
 }
 .conf-meta{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.4rem}
 .pres-type{
