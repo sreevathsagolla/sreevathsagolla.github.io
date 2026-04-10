@@ -381,6 +381,65 @@ section{padding:3.5rem 2rem}
   .pub-modal-title{font-size:1.05rem}
 }
 
+/* ─── IMAGE LIGHTBOX ─── */
+.lightbox-overlay{
+  position:fixed;inset:0;z-index:1100;
+  background:rgba(248,246,242,0.72);
+  backdrop-filter:blur(4px);
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  padding:2rem;
+}
+[data-theme="dark"] .lightbox-overlay{background:rgba(20,24,32,0.75)}
+.lightbox-overlay.active{display:flex}
+.lightbox-box{
+  position:relative;
+  width:100%;max-width:860px;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:0 20px 60px rgba(27,45,69,0.12),0 2px 8px rgba(27,45,69,0.06);
+  overflow:hidden;
+}
+[data-theme="dark"] .lightbox-box{box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.lightbox-close{
+  position:absolute;top:0.8rem;right:0.8rem;z-index:3;
+  width:30px;height:30px;border-radius:50%;border:none;
+  background:rgba(45,54,64,0.55);color:#fff;
+  font-size:0.8rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;backdrop-filter:blur(4px);
+}
+.lightbox-close:hover{background:var(--coral)}
+.lightbox-img-wrap{
+  position:relative;width:100%;
+  background:#ece8e2;display:flex;align-items:center;justify-content:center;
+  min-height:300px;max-height:75vh;
+}
+[data-theme="dark"] .lightbox-img-wrap{background:#2a2f38}
+.lightbox-img-wrap img{
+  display:block;max-width:100%;max-height:75vh;object-fit:contain;
+}
+.lightbox-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+  width:36px;height:36px;border-radius:50%;border:none;
+  background:rgba(45,54,64,0.55);color:#fff;font-size:0.8rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;backdrop-filter:blur(4px);
+}
+.lightbox-arrow:hover{background:rgba(45,54,64,0.85)}
+.lightbox-arrow.prev{left:0.8rem}
+.lightbox-arrow.next{right:0.8rem}
+.lightbox-controls{
+  display:flex;align-items:center;justify-content:center;
+  gap:6px;padding:0.7rem 0;background:var(--white);
+}
+.lightbox-dot{
+  width:9px;height:9px;border-radius:50%;border:none;
+  background:var(--sand-dark);cursor:pointer;padding:0;
+  transition:background .2s;
+}
+.lightbox-dot.active{background:var(--teal)}
+
 /* ─── EXPERIENCE ─── */
 #experience{background:var(--sand)}
 .timeline{position:relative;padding-left:2rem}
@@ -1098,6 +1157,19 @@ footer{
   </div>
 </div>
 
+<!-- IMAGE LIGHTBOX -->
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <div class="lightbox-box">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close"><i class="fas fa-times"></i></button>
+    <div class="lightbox-img-wrap">
+      <button class="lightbox-arrow prev" id="lbPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <img id="lightboxImg" src="" alt="">
+      <button class="lightbox-arrow next" id="lbNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="lightbox-controls" id="lbDots"></div>
+  </div>
+</div>
+
 <div class="scroll-progress" id="scrollProgress"></div>
 <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
@@ -1339,6 +1411,80 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   // Close on Escape key
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
+  });
+})();
+
+// Image lightbox
+(function(){
+  var overlay = document.getElementById('lightboxOverlay');
+  var img = document.getElementById('lightboxImg');
+  var dotsWrap = document.getElementById('lbDots');
+  var prevBtn = document.getElementById('lbPrev');
+  var nextBtn = document.getElementById('lbNext');
+  var closeBtn = document.getElementById('lightboxClose');
+  var slides = [];
+  var current = 0;
+
+  function show(idx){
+    current = ((idx % slides.length) + slides.length) % slides.length;
+    img.src = slides[current];
+    dotsWrap.querySelectorAll('.lightbox-dot').forEach(function(d,j){
+      d.classList.toggle('active', j === current);
+    });
+  }
+
+  function open(carousel, startIdx){
+    var imgs = carousel.querySelectorAll('.carousel-slide img');
+    slides = [];
+    imgs.forEach(function(i){ slides.push(i.src); });
+    if(!slides.length) return;
+
+    dotsWrap.innerHTML = '';
+    slides.forEach(function(_, i){
+      var dot = document.createElement('button');
+      dot.className = 'lightbox-dot' + (i === startIdx ? ' active' : '');
+      dot.setAttribute('aria-label', 'Image ' + (i+1));
+      dot.addEventListener('click', function(){ show(i); });
+      dotsWrap.appendChild(dot);
+    });
+
+    show(startIdx);
+    overlay.classList.add('active');
+  }
+
+  function close(){
+    overlay.classList.remove('active');
+    img.src = '';
+    slides = [];
+  }
+
+  closeBtn.addEventListener('click', close);
+  prevBtn.addEventListener('click', function(){ show(current - 1); });
+  nextBtn.addEventListener('click', function(){ show(current + 1); });
+
+  // Clicking overlay background does nothing (only close via X)
+  overlay.addEventListener('click', function(e){ e.stopPropagation(); });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e){
+    if(!overlay.classList.contains('active')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowLeft') show(current - 1);
+    if(e.key === 'ArrowRight') show(current + 1);
+  });
+
+  // Attach click handlers to all carousel slide images
+  document.querySelectorAll('.carousel-slide img').forEach(function(imgEl){
+    imgEl.style.cursor = 'pointer';
+    imgEl.addEventListener('click', function(e){
+      e.stopPropagation();
+      var carousel = imgEl.closest('[data-carousel]');
+      if(!carousel) return;
+      var allImgs = carousel.querySelectorAll('.carousel-slide img');
+      var idx = 0;
+      allImgs.forEach(function(im, i){ if(im === imgEl) idx = i; });
+      open(carousel, idx);
+    });
   });
 })();
 </script>
