@@ -569,25 +569,52 @@ section{padding:2.5rem 2rem}
 /* ─── SKILLS ─── */
 #skills{background:var(--sand)}
 .skills-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.4rem;
 }
 .skill-group{
-  padding:1.5rem;border-radius:10px;background:var(--white);
-  border:1px solid rgba(27,45,69,0.06);
+  position:relative;padding:1.55rem 1.5rem 1.4rem;border-radius:12px;
+  background:var(--white);border:1px solid var(--border);
+  border-left:3px solid var(--card-accent,var(--teal));
+  box-shadow:0 1px 2px var(--card-shadow);
+  transition:transform .3s ease,box-shadow .3s ease;
 }
+.skill-group.fade-in.visible:hover,.skill-group:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 30px var(--card-shadow);
+}
+.skill-group[data-accent="programming"]{--card-accent:#6a7d8b}
+.skill-group[data-accent="models"]{--card-accent:#4a6478}
+.skill-group[data-accent="gis"]{--card-accent:#b89e7e}
+.skill-group[data-accent="ai"]{--card-accent:#a07858}
+.skill-group[data-accent="computing"]{--card-accent:#4a5968}
+.skill-group[data-accent="languages"]{--card-accent:#7a8a6f}
+[data-theme="dark"] .skill-group[data-accent="programming"]{--card-accent:#8fa5b3}
+[data-theme="dark"] .skill-group[data-accent="models"]{--card-accent:#7b94a8}
+[data-theme="dark"] .skill-group[data-accent="gis"]{--card-accent:#c4a882}
+[data-theme="dark"] .skill-group[data-accent="ai"]{--card-accent:#c9a27c}
+[data-theme="dark"] .skill-group[data-accent="computing"]{--card-accent:#8c9aaa}
+[data-theme="dark"] .skill-group[data-accent="languages"]{--card-accent:#9aa890}
+.skill-header{display:flex;align-items:center;gap:0.85rem;margin-bottom:1rem}
+.skill-icon-badge{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--card-accent,var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;box-shadow:0 4px 10px rgba(45,54,64,0.12);
+}
+.skill-icon-badge i{color:#fff;font-size:1.05rem}
 .skill-group h4{
-  font-size:0.78rem;font-weight:500;letter-spacing:0.1em;
-  text-transform:uppercase;color:var(--teal);margin-bottom:0.8rem;
+  font-family:'Newsreader',serif;font-size:1.1rem;font-weight:500;
+  color:var(--deep);letter-spacing:0;text-transform:none;margin:0;line-height:1.2;
 }
 .skill-group p{font-size:0.88rem;color:var(--text-light);line-height:1.6}
-.skill-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem}
-.skill-header h4{margin-bottom:0}
-.skill-icon{color:var(--teal);font-size:1rem}
 .skill-pills{display:flex;flex-wrap:wrap;gap:0.4rem}
 .skill-pills span{
-  font-size:0.78rem;padding:0.3rem 0.8rem;border-radius:100px;
-  background:rgba(61,139,148,0.1);color:var(--teal);font-weight:500;
+  font-size:0.76rem;padding:0.32rem 0.78rem;border-radius:100px;
+  background:transparent;border:1px solid var(--card-accent,var(--teal));
+  color:var(--card-accent,var(--teal));font-weight:500;
+  transition:background .2s ease,color .2s ease;
 }
+.skill-pills span:hover{background:var(--card-accent,var(--teal));color:#fff}
 .teaching-list{display:flex;flex-direction:column;gap:0.25rem}
 .teaching-item{
   display:flex;align-items:flex-start;gap:0.6rem;
@@ -1051,28 +1078,28 @@ footer{
     <p class="section-label">Technical</p>
     <h2 class="section-title">Skills &amp; Tools</h2>
     <div class="skills-grid">
-      <div class="skill-group fade-in">
-        <div class="skill-header"><i class="fas fa-code skill-icon"></i><h4>Programming</h4></div>
+      <div class="skill-group fade-in" data-accent="programming">
+        <div class="skill-header"><div class="skill-icon-badge"><i class="fas fa-code"></i></div><h4>Programming</h4></div>
         <div class="skill-pills"><span>Python</span><span>MATLAB</span><span>Mathematica</span><span>LaTeX</span><span>Shell</span></div>
       </div>
-      <div class="skill-group fade-in">
-        <div class="skill-header"><i class="fas fa-water skill-icon"></i><h4>Ocean &amp; Climate Models</h4></div>
+      <div class="skill-group fade-in" data-accent="models">
+        <div class="skill-header"><div class="skill-icon-badge"><i class="fas fa-water"></i></div><h4>Ocean &amp; Climate Models</h4></div>
         <div class="skill-pills"><span>NEMO</span><span>CESM MESACLIP</span><span>CMIP6 HighResMIP</span></div>
       </div>
-      <div class="skill-group fade-in">
-        <div class="skill-header"><i class="fas fa-globe-americas skill-icon"></i><h4>GIS &amp; Data Tools</h4></div>
+      <div class="skill-group fade-in" data-accent="gis">
+        <div class="skill-header"><div class="skill-icon-badge"><i class="fas fa-globe-americas"></i></div><h4>GIS &amp; Data Tools</h4></div>
         <div class="skill-pills"><span>ArcGIS</span><span>QGIS</span><span>CDO</span><span>CDAT</span></div>
       </div>
-      <div class="skill-group fade-in">
-        <div class="skill-header"><i class="fas fa-brain skill-icon"></i><h4>AI / ML</h4></div>
+      <div class="skill-group fade-in" data-accent="ai">
+        <div class="skill-header"><div class="skill-icon-badge"><i class="fas fa-brain"></i></div><h4>AI / ML</h4></div>
         <div class="skill-pills"><span>Deep Learning</span><span>Super-Resolution</span><span>CNNs</span><span>GANs</span></div>
       </div>
-      <div class="skill-group fade-in">
-        <div class="skill-header"><i class="fas fa-server skill-icon"></i><h4>Computing</h4></div>
+      <div class="skill-group fade-in" data-accent="computing">
+        <div class="skill-header"><div class="skill-icon-badge"><i class="fas fa-server"></i></div><h4>Computing</h4></div>
         <div class="skill-pills"><span>HPC Clusters</span><span>CPU &amp; GPU</span></div>
       </div>
-      <div class="skill-group fade-in">
-        <div class="skill-header"><i class="fas fa-language skill-icon"></i><h4>Languages</h4></div>
+      <div class="skill-group fade-in" data-accent="languages">
+        <div class="skill-header"><div class="skill-icon-badge"><i class="fas fa-language"></i></div><h4>Languages</h4></div>
         <div class="skill-pills"><span>English (TOEFL 108)</span><span>Hindi (Fluent)</span><span>Telugu (Native)</span></div>
       </div>
     </div>
