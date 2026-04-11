@@ -615,12 +615,6 @@ section{padding:2.5rem 2rem}
   transition:background .2s ease,color .2s ease;
 }
 .skill-pills span:hover{background:var(--card-accent,var(--teal));color:#fff}
-.teaching-list{display:flex;flex-direction:column;gap:0.25rem}
-.teaching-item{
-  display:flex;align-items:flex-start;gap:0.6rem;
-  padding:0.45rem 0.8rem;border-radius:8px;font-size:0.85rem;color:var(--text-light);
-}
-.teaching-item strong{color:var(--deep);font-weight:600}
 .teaching-bullet{
   width:8px;height:8px;border-radius:50%;background:var(--teal);
   flex-shrink:0;margin-top:0.5rem;
@@ -635,15 +629,51 @@ section{padding:2.5rem 2rem}
   padding:0.15rem 0.5rem;border-radius:100px;margin-right:0.3rem;vertical-align:middle;
 }
 .timeline-item .role-place{font-size:0.88rem;color:var(--teal);font-weight:600;margin:0.2rem 0}
-.teaching-leadership-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;
+.tl-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.4rem;align-items:stretch;
 }
-.teaching-col-title{
+.tl-card{
+  position:relative;padding:1.55rem 1.5rem 1.4rem;border-radius:12px;
+  background:var(--white);border:1px solid var(--border);
+  border-left:3px solid var(--card-accent,var(--teal));
+  box-shadow:0 1px 2px var(--card-shadow);
+  transition:transform .3s ease,box-shadow .3s ease;
+  display:flex;flex-direction:column;
+}
+.tl-card.fade-in.visible:hover,.tl-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 30px var(--card-shadow);
+}
+.tl-card[data-accent="teaching"]{--card-accent:#6a7d8b}
+.tl-card[data-accent="awards"]{--card-accent:#b89e7e}
+.tl-card[data-accent="workshops"]{--card-accent:#7a8a6f}
+[data-theme="dark"] .tl-card[data-accent="teaching"]{--card-accent:#8fa5b3}
+[data-theme="dark"] .tl-card[data-accent="awards"]{--card-accent:#c4a882}
+[data-theme="dark"] .tl-card[data-accent="workshops"]{--card-accent:#9aa890}
+.tl-header{display:flex;align-items:center;gap:0.85rem;margin-bottom:1.1rem}
+.tl-icon-badge{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--card-accent,var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;box-shadow:0 4px 10px rgba(45,54,64,0.12);
+}
+.tl-icon-badge i{color:#fff;font-size:1.05rem}
+.tl-card h4{
   font-family:'Newsreader',serif;font-size:1.1rem;font-weight:500;
-  color:var(--deep);margin-bottom:0.8rem;
+  color:var(--deep);margin:0;line-height:1.25;
 }
-.awards-section,.workshops-section{margin-bottom:1rem}
-.awards-section:last-child,.workshops-section:last-child{margin-bottom:0}
+.tl-list{display:flex;flex-direction:column;gap:0.65rem}
+.tl-item{
+  display:flex;align-items:flex-start;gap:0.65rem;
+  font-size:0.85rem;color:var(--text-light);line-height:1.55;
+}
+.tl-item strong{color:var(--deep);font-weight:600}
+.tl-bullet{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--card-accent,var(--teal));
+  flex-shrink:0;margin-top:0.55rem;
+}
 
 /* ─── CONTACT ─── */
 #contact{
@@ -730,7 +760,7 @@ footer{
   .timeline-item{grid-template-columns:1fr}
   .carousel{max-width:340px;margin-top:0.5rem}
   .contact-grid{grid-template-columns:1fr}
-  .teaching-leadership-grid{grid-template-columns:1fr}
+  .tl-grid{grid-template-columns:1fr}
 }
 @media(max-width:640px){
   .nav-links{
@@ -1106,33 +1136,40 @@ footer{
 
     <p class="section-label" style="margin-top:2rem">Beyond Research</p>
     <h3 class="section-title" style="font-size:1.6rem;margin-bottom:1.2rem">Teaching, Leadership &amp; More</h3>
-    <div class="teaching-leadership-grid">
-      <div>
-        <p class="teaching-col-title">Teaching &amp; Leadership</p>
-        <div class="teaching-list">
-          <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Module Demonstrator &amp; Teaching Assistant</strong> &mdash; SOES3010, SOES2025, SOES3042, SOES6037 at <a href="https://www.southampton.ac.uk/" target="_blank" class="inst-link">University of Southampton</a>; ECS101 at <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal</a></div></div>
-          <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Vice-Secretary</strong>, Computing and Networking Council, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal</a> (2021&ndash;2022)</div></div>
-          <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Club Coordinator</strong>, EES Club, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal</a> (2020&ndash;2021)</div></div>
-          <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Event Management &amp; Design Lead</strong>, ORB 2021 Departmental Symposium</div></div>
-          <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Student Volunteer</strong>, TROPMET-2022 National Symposium</div></div>
+    <div class="tl-grid">
+      <div class="tl-card fade-in" data-accent="teaching">
+        <div class="tl-header">
+          <div class="tl-icon-badge"><i class="fas fa-chalkboard-user"></i></div>
+          <h4>Teaching &amp; Leadership</h4>
+        </div>
+        <div class="tl-list">
+          <div class="tl-item"><span class="tl-bullet"></span><div><strong>Module Demonstrator &amp; Teaching Assistant</strong> &mdash; SOES3010, SOES2025, SOES3042, SOES6037 at <a href="https://www.southampton.ac.uk/" target="_blank" class="inst-link">University of Southampton</a>; ECS101 at <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal</a></div></div>
+          <div class="tl-item"><span class="tl-bullet"></span><div><strong>Vice-Secretary</strong>, Computing and Networking Council, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal</a> (2021&ndash;2022)</div></div>
+          <div class="tl-item"><span class="tl-bullet"></span><div><strong>Club Coordinator</strong>, EES Club, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal</a> (2020&ndash;2021)</div></div>
+          <div class="tl-item"><span class="tl-bullet"></span><div><strong>Event Management &amp; Design Lead</strong>, ORB 2021 Departmental Symposium</div></div>
+          <div class="tl-item"><span class="tl-bullet"></span><div><strong>Student Volunteer</strong>, TROPMET-2022 National Symposium</div></div>
         </div>
       </div>
-      <div>
-        <div class="awards-section">
-          <p class="teaching-col-title">Awards &amp; Funding</p>
-          <div class="teaching-list">
-            <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Proficiency Medal</strong> for Best Academic Performance in Earth &amp; Environmental Sciences, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal</a></div></div>
-            <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>INSPIRE DTP Studentship</strong> (NERC-funded), <a href="https://www.southampton.ac.uk/" target="_blank" class="inst-link">University of Southampton</a>, 2023&ndash;Present</div></div>
-            <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>Mitacs Globalink Fellowship</strong>, <a href="https://www.ualberta.ca/en/index.html" target="_blank" class="inst-link">University of Alberta</a>, 2022</div></div>
-          </div>
+      <div class="tl-card fade-in" data-accent="awards">
+        <div class="tl-header">
+          <div class="tl-icon-badge"><i class="fas fa-award"></i></div>
+          <h4>Awards &amp; Funding</h4>
         </div>
-        <div class="workshops-section">
-          <p class="teaching-col-title">Workshops &amp; Training</p>
-          <div class="teaching-list">
-            <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>NSM GPU Hackathon</strong>, NSM, CDAC &amp; NVIDIA at IIT Bombay (Sep 2022)</div></div>
-            <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>TROPMET-2022</strong> National Symposium, Indian Meteorological Society, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal</a> (Nov 2022)</div></div>
-            <div class="teaching-item fade-in"><span class="teaching-bullet"></span><div><strong>M.P. Youth Policy Consultation</strong> on Environmental Sustainability, EPCO, Govt. of Madhya Pradesh (Dec 2022)</div></div>
-          </div>
+        <div class="tl-list">
+          <div class="tl-item"><span class="tl-bullet"></span><div><strong>Proficiency Medal</strong> for Best Academic Performance in Earth &amp; Environmental Sciences, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal</a></div></div>
+          <div class="tl-item"><span class="tl-bullet"></span><div><strong>INSPIRE DTP Studentship</strong> (NERC-funded), <a href="https://www.southampton.ac.uk/" target="_blank" class="inst-link">University of Southampton</a>, 2023&ndash;Present</div></div>
+          <div class="tl-item"><span class="tl-bullet"></span><div><strong>Mitacs Globalink Fellowship</strong>, <a href="https://www.ualberta.ca/en/index.html" target="_blank" class="inst-link">University of Alberta</a>, 2022</div></div>
+        </div>
+      </div>
+      <div class="tl-card fade-in" data-accent="workshops">
+        <div class="tl-header">
+          <div class="tl-icon-badge"><i class="fas fa-graduation-cap"></i></div>
+          <h4>Workshops &amp; Training</h4>
+        </div>
+        <div class="tl-list">
+          <div class="tl-item"><span class="tl-bullet"></span><div><strong>NSM GPU Hackathon</strong>, NSM, CDAC &amp; NVIDIA at IIT Bombay (Sep 2022)</div></div>
+          <div class="tl-item"><span class="tl-bullet"></span><div><strong>TROPMET-2022</strong> National Symposium, Indian Meteorological Society, <a href="https://www.iiserb.ac.in/" target="_blank" class="inst-link">IISER Bhopal</a> (Nov 2022)</div></div>
+          <div class="tl-item"><span class="tl-bullet"></span><div><strong>M.P. Youth Policy Consultation</strong> on Environmental Sustainability, EPCO, Govt. of Madhya Pradesh (Dec 2022)</div></div>
         </div>
       </div>
     </div>
